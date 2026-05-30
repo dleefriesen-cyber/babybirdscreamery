@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baby Bird's Creamery — Boutique Ice Cream Cart Rental | Southern California</title>
+  <meta name="description" content="Baby Bird's Creamery is a boutique ice cream cart rental for birthdays, weddings, baby showers, and all your celebrations. Serving Southern California." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" />
+
+  <style>
+    :root {
+      --pink:        #C8796E;   /* comfort dusty rose-pink */
+      --pink-dark:   #B0605A;
+      --green:       #2E3D38;   /* dark greenish-grey */
+      --green-mid:   #3A4D47;
+      --green-dark:  #1E2C28;   /* deepest — footer, contact bg */
+      --gold:        #B8965A;
+      --gold-light:  #DEC98A;
+      --ivory:       #F8F6F3;
+      --cream:       #F0EBE4;
+      --text:        #1A1814;
+      --text-mid:    #4E4A46;
+      --text-light:  #8A847E;
+      --white:       #FFFFFF;
+
+      --font-script:  'Snell Roundhand', 'SnellRoundhand', 'Pinyon Script', cursive;
+      --font-serif:   'Cormorant Garamond', Georgia, serif;
+      --font-sans:    'DM Sans', system-ui, sans-serif;
+
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --t:    0.32s var(--ease);
+
+      --nav-h:  80px;
+      --pad:    clamp(80px, 10vw, 140px);
+      --gutter: clamp(20px, 5vw, 80px);
+      --max:    1280px;
+
+      --rule: 1px solid rgba(184,150,90,0.22);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); background: var(--green); color: var(--white); line-height: 1.7; overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: var(--font-sans); }
+    input, select, textarea { font-family: var(--font-sans); font-size: 1rem; }
+
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .wrap {
+      max-width: var(--max);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    /* ── LABELS / HEADINGS ──────────────────────────────── */
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .eyebrow::before, .eyebrow::after {
+      content: '';
+      flex-shrink: 0;
+      width: 32px; height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+    .eyebrow.center { justify-content: center; }
+    .eyebrow.left::before { display: none; }
+
+    .h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: 0.01em;
+    }
+    .h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.9rem, 3.5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+    }
+    .h3 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .gold-bar {
+      width: 40px; height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+    .gold-bar.center { margin-inline: auto; }
+
+    /* ── FADE IN ─────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.d1 { transition-delay: 0.1s; }
+    .reveal.d2 { transition-delay: 0.2s; }
+    .reveal.d3 { transition-delay: 0.3s; }
+    .reveal.d4 { transition-delay: 0.4s; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ── BUTTONS ─────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      transition: var(--t);
+      padding: 14px 40px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-dark {
+      background: var(--green-dark);
+      color: var(--white);
+      border: 1px solid var(--green-dark);
+    }
+    .btn-dark:hover {
+      background: var(--green);
+      border-color: var(--green);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(36,60,52,0.25);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      border-color: rgba(255,255,255,0.65);
+      transform: translateY(-2px);
+    }
+    .btn-pink {
+      background: var(--pink);
+      color: var(--white);
+      border: 1px solid var(--pink);
+    }
+    .btn-pink:hover {
+      background: #b5545c;
+      border-color: #b5545c;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,99,106,0.28);
+    }
+    .btn-ghost {
+      background: rgba(255,255,255,0.10);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.40);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.20);
+      border-color: rgba(255,255,255,0.75);
+      transform: translateY(-2px);
+    }
+    .btn-w { width: 100%; }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: var(--nav-h);
+      /* Transparent over hero — bleeds into image */
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background var(--t), border-color var(--t), box-shadow var(--t);
+    }
+    /* White nav once user scrolls */
+    #nav.scrolled {
+      background: var(--white);
+      border-bottom: var(--rule);
+      box-shadow: 0 2px 32px rgba(26,24,20,0.09);
+    }
+
+    .nav-inner {
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    /* Script wordmark — white over hero, gold when scrolled */
+    .nav-script {
+      font-family: var(--font-script);
+      font-size: 1.9rem;
+      line-height: 1;
+      color: var(--white);
+      -webkit-text-fill-color: var(--white);
+      background: none;
+      transition: color var(--t), -webkit-text-fill-color var(--t);
+    }
+    #nav.scrolled .nav-script {
+      background: linear-gradient(135deg, var(--gold) 25%, var(--gold-light) 55%, #A07830 85%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-sub {
+      font-size: 0.58rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-top: 1px;
+      transition: color var(--t);
+    }
+    #nav.scrolled .nav-sub { color: var(--text-light); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .nav-links a {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.80);
+      position: relative;
+      transition: color var(--t);
+    }
+    #nav.scrolled .nav-links a { color: var(--text-mid); }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width var(--t);
+    }
+    .nav-links a:hover { color: var(--white); }
+    #nav.scrolled .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 32px; height: 32px;
+      padding: 4px;
+      cursor: pointer;
+    }
+    .nav-burger span {
+      display: block;
+      height: 1.5px; width: 100%;
+      background: var(--white);
+      transition: var(--t);
+      transform-origin: center;
+    }
+    #nav.scrolled .nav-burger span { background: var(--text); }
+    .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: var(--white);
+      border-top: var(--rule);
+      padding: 16px 28px 32px;
+      flex-direction: column;
+      z-index: 99;
+      box-shadow: 0 8px 32px rgba(26,24,20,0.12);
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      padding: 15px 0;
+      border-bottom: var(--rule);
+      transition: color var(--t);
+    }
+    .nav-drawer a:last-child { border-bottom: none; }
+    .nav-drawer a:hover { color: var(--text); }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 28%;
+    }
+
+    /* Dark greenish-grey overlay — bleeds into nav, strong text contrast */
+    .hero-veil {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(30,44,40,0.72) 0%,
+          rgba(30,44,40,0.55) 45%,
+          rgba(30,44,40,0.78) 100%);
+      z-index: 1;
+    }
+
+    .hero-body {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      padding-inline: 24px;
+    }
+
+    /* location pill */
+    .hero-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: rgba(222,201,138,0.75);
+      margin-bottom: 32px;
+    }
+    .hero-location::before, .hero-location::after {
+      content: '';
+      display: block;
+      width: 40px; height: 1px;
+      background: rgba(222,201,138,0.40);
+      flex-shrink: 0;
+    }
+
+    /* The script name */
+    .hero-script {
+      display: block;
+      font-family: var(--font-script);
+      font-size: clamp(5rem, 15vw, 11rem);
+      line-height: 0.92;
+      color: #fff;
+      text-shadow:
+        3px 5px 0 rgba(0,0,0,0.48),
+        7px 12px 0 rgba(0,0,0,0.18),
+        0   0  48px rgba(0,0,0,0.28);
+    }
+
+    /* ICE CREAM — refined small caps */
+    .hero-sub {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: clamp(0.58rem, 1.2vw, 0.78rem);
+      font-weight: 400;
+      letter-spacing: 0.55em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.78);
+      margin-top: 20px;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.45);
+    }
+
+    /* thin gold ornament */
+    .hero-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 36px auto;
+    }
+    .hero-rule-line {
+      width: 72px; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(184,150,90,0.6));
+    }
+    .hero-rule-line.rev {
+      background: linear-gradient(to left, transparent, rgba(184,150,90,0.6));
+    }
+    .hero-rule-gem {
+      width: 4px; height: 4px;
+      background: rgba(184,150,90,0.7);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.4rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.78);
+      letter-spacing: 0.03em;
+      margin-bottom: 48px;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.40);
+    }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-scroll {
+      display: block;
+      margin-top: 24px;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.40);
+      transition: color var(--t);
+    }
+    .hero-scroll:hover { color: rgba(255,255,255,0.75); }
+
+    /* ── ABOUT ───────────────────────────────────────────── */
+    #about { padding-block: var(--pad); background: var(--green); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(48px, 7vw, 100px);
+      align-items: center;
+    }
+
+    .about-img {
+      aspect-ratio: 4/3;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .about-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .about-img:hover img { transform: scale(1.03); }
+
+    .about-text > * + * { margin-top: 20px; }
+
+    .about-body {
+      color: rgba(255,255,255,0.68);
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+    .about-body p + p { margin-top: 14px; }
+
+    .about-stats {
+      display: flex;
+      border-top: var(--rule);
+      border-bottom: var(--rule);
+      padding-block: 28px;
+      margin-top: 36px;
+    }
+    .stat {
+      flex: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .stat + .stat { border-left: var(--rule); }
+    .stat-val {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--pink);
+      line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.42);
+    }
+
+    /* ── PACKAGES ────────────────────────────────────────── */
+    #packages {
+      padding-block: var(--pad);
+      background: var(--green-mid);
+      border-top: var(--rule);
+      border-bottom: var(--rule);
+    }
+
+    .pkg-header { text-align: center; margin-bottom: 72px; color: var(--white); }
+    .pkg-header > * + * { margin-top: 16px; }
+
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .pkg-card {
+      background: var(--green-dark);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .pkg-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.30);
+    }
+
+    .pkg-card.featured {
+      border-color: var(--pink);
+      transform: scale(1.03);
+      box-shadow: 0 12px 48px rgba(201,99,106,0.12);
+      animation: pkgPulse 4s ease-in-out infinite;
+    }
+    .pkg-card.featured:hover {
+      transform: scale(1.03) translateY(-6px);
+      animation: none;
+      box-shadow: 0 24px 72px rgba(201,99,106,0.18);
+    }
+    @keyframes pkgPulse {
+      0%,100% { box-shadow: 0 12px 48px rgba(201,99,106,0.10); }
+      50%      { box-shadow: 0 12px 48px rgba(201,99,106,0.22), 0 0 0 4px rgba(201,99,106,0.05); }
+    }
+
+    .pkg-badge {
+      position: absolute;
+      top: 14px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--pink);
+      color: var(--white);
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 18px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      z-index: 2;
+    }
+
+    .pkg-img {
+      overflow: hidden;
+      position: relative;
+    }
+    .pkg-img img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .pkg-card:hover .pkg-img img { transform: scale(1.04); }
+
+    .pkg-body {
+      padding: 28px 28px 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .pkg-name {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .pkg-price {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--pink);
+      margin-bottom: 22px;
+    }
+
+    .pkg-list { flex: 1; margin-bottom: 28px; }
+    .pkg-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.60);
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      line-height: 1.5;
+    }
+    .pkg-list li:last-child { border-bottom: none; }
+    .pkg-list li::before {
+      content: '–';
+      color: var(--pink);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── HOW IT WORKS ────────────────────────────────────── */
+    #how {
+      padding-block: var(--pad);
+      background: var(--green-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    #how::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 1000px 600px at 80% 50%, rgba(46,61,56,0.6) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .how-header { text-align: center; margin-bottom: 80px; position: relative; }
+    .how-header .eyebrow { color: rgba(184,150,90,0.65); }
+    .how-header .eyebrow::before, .how-header .eyebrow::after { background: var(--gold); opacity: 0.3; }
+    .how-header .h2 { color: var(--white); margin-top: 14px; }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      position: relative;
+    }
+
+    .how-step {
+      text-align: center;
+      color: var(--white);
+      padding-inline: clamp(24px, 4vw, 56px);
+    }
+    .how-step + .how-step { border-left: 1px solid rgba(184,150,90,0.15); }
+    .how-step:first-child { padding-left: 0; }
+    .how-step:last-child { padding-right: 0; }
+
+    .how-num {
+      font-family: var(--font-serif);
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(184,150,90,0.18);
+      line-height: 1;
+      margin-bottom: -6px;
+    }
+    .how-icon { font-size: 2rem; margin-bottom: 18px; display: block; }
+    .how-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+    .how-desc { font-size: 0.92rem; color: rgba(255,255,255,0.58); line-height: 1.8; }
+
+    /* ── EVENTS ──────────────────────────────────────────── */
+    #events { padding-block: var(--pad); background: var(--green); }
+
+    .events-header { text-align: center; margin-bottom: 52px; color: var(--white); }
+    .events-header > * + * { margin-top: 16px; }
+
+    .events-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 56px;
+    }
+    .pill {
+      padding: 8px 20px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .pill:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(26,24,20,0.10); }
+    .pill.rose  { background: var(--pink); color: var(--white); }
+    .pill.sage  { background: rgba(255,255,255,0.12); color: var(--white); border: 1px solid rgba(255,255,255,0.18); }
+    .pill.gold  { background: var(--gold); color: var(--white); }
+
+    .events-photo {
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .events-photo img {
+      width: 100%;
+      aspect-ratio: 12/5;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    /* ── GALLERY ─────────────────────────────────────────── */
+    #gallery {
+      padding-block: var(--pad);
+      background: var(--green-mid);
+      border-top: var(--rule);
+      border-bottom: var(--rule);
+    }
+
+    .gallery-header { text-align: center; margin-bottom: 52px; color: var(--white); }
+    .gallery-header > * + * { margin-top: 14px; }
+    .gallery-handle {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--pink);
+      letter-spacing: 0.04em;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 44px;
+    }
+    .gallery-tile { border-radius: 4px; overflow: hidden; }
+    .gallery-tile img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .gallery-tile:hover img { transform: scale(1.04); }
+
+    .gallery-cta { display: flex; justify-content: center; }
+    .btn-ig {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 40px;
+      border-radius: 9999px;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--pink);
+      transition: background var(--t), transform var(--t);
+    }
+    .btn-ig:hover { background: #b5545c; transform: translateY(-2px); }
+
+    /* ── CONTACT ─────────────────────────────────────────── */
+    #contact {
+      position: relative;
+      padding-block: var(--pad);
+      background: var(--green-dark);
+    }
+    #contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 1000px 600px at 20% 50%, rgba(59,94,82,0.35) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .contact-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(48px, 7vw, 100px);
+      align-items: center;
+    }
+
+    .contact-left > * + * { margin-top: 20px; }
+    .contact-left .eyebrow { color: rgba(184,150,90,0.65); }
+    .contact-left .eyebrow::before { display: none; }
+    .contact-left .eyebrow::after { background: var(--gold); opacity: 0.4; }
+    .contact-left .h2 { color: var(--white); }
+    .contact-desc { color: rgba(255,255,255,0.58); font-size: 0.97rem; line-height: 1.85; }
+
+    .contact-details { margin-top: 36px; padding-top: 32px; border-top: 1px solid rgba(184,150,90,0.18); display: flex; flex-direction: column; gap: 12px; }
+    .contact-detail { display: flex; gap: 12px; font-size: 0.88rem; color: rgba(255,255,255,0.55); letter-spacing: 0.03em; }
+
+    /* Form */
+    .form-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: clamp(28px, 4vw, 52px);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.22);
+      position: relative;
+      overflow: hidden;
+    }
+    /* thin pink top accent */
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--pink);
+    }
+
+    .form-title {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: var(--green-dark);
+      margin-bottom: 28px;
+      margin-top: 8px;
+    }
+
+    .form-success { display: none; text-align: center; padding: 40px 20px; }
+    .form-success-icon { font-size: 3rem; margin-bottom: 16px; }
+    .form-success h3 { font-family: var(--font-serif); font-size: 2rem; color: var(--green-dark); margin-bottom: 10px; font-weight: 400; }
+    .form-success p { color: var(--text-mid); font-size: 0.97rem; line-height: 1.7; }
+
+    .fg { margin-bottom: 16px; }
+    .fl {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 7px;
+    }
+    .fl .req { color: var(--pink); }
+    .fi, .fs, .ft {
+      display: block;
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid rgba(26,24,20,0.14);
+      border-radius: 4px;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--ivory);
+      outline: none;
+      transition: border-color var(--t), box-shadow var(--t), background var(--t);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .fs {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%239A948E' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-color: var(--ivory);
+      padding-right: 36px;
+    }
+    .fi:focus, .fs:focus, .ft:focus {
+      border-color: var(--pink);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(201,99,106,0.10);
+    }
+    .ft { resize: vertical; min-height: 96px; }
+    .fr { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--green-dark);
+      color: var(--white);
+      border: none;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 12px;
+      cursor: pointer;
+      transition: background var(--t), transform var(--t), box-shadow var(--t);
+    }
+    .btn-submit:hover:not(:disabled) {
+      background: var(--green);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(36,60,52,0.28);
+    }
+    .btn-submit:disabled { opacity: 0.65; cursor: not-allowed; }
+
+    .spin {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: sp 0.7s linear infinite;
+      display: none;
+    }
+    .btn-submit.loading .spin { display: block; }
+    .btn-submit.loading .btn-label { display: none; }
+    @keyframes sp { to { transform: rotate(360deg); } }
+
+    .form-err {
+      display: none;
+      padding: 12px 14px;
+      background: rgba(201,99,106,0.07);
+      border: 1px solid rgba(201,99,106,0.2);
+      border-radius: 4px;
+      color: #a0434a;
+      font-size: 0.85rem;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    #footer {
+      background: #111E1A;
+      color: var(--white);
+      padding-top: 88px;
+      padding-bottom: 36px;
+      border-top: 1px solid rgba(184,150,90,0.15);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(184,150,90,0.12);
+    }
+
+    .footer-script {
+      font-family: var(--font-script);
+      font-size: 2.4rem;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--gold) 20%, var(--gold-light) 55%, #A07830 85%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .footer-sub {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      display: block;
+      margin-bottom: 18px;
+    }
+    .footer-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-socials a {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,150,90,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.50);
+      transition: background var(--t), border-color var(--t), color var(--t);
+    }
+    .footer-socials a:hover {
+      background: rgba(184,150,90,0.12);
+      border-color: var(--gold);
+      color: var(--white);
+    }
+
+    .footer-col-title {
+      font-size: 0.64rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a, .footer-links span {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.48);
+      transition: color var(--t);
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img { max-width: 520px; margin-inline: auto; }
+
+      .pkg-grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
+      .pkg-card.featured { transform: none; }
+      .pkg-card.featured:hover { transform: translateY(-6px); }
+
+      .how-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; gap: 48px; }
+      .how-step + .how-step { border-left: none; border-top: 1px solid rgba(184,150,90,0.15); padding-left: 0; padding-top: 40px; }
+      .how-step:first-child { padding: 0; }
+      .how-step:last-child { padding: 0; }
+
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-left { text-align: center; }
+      .contact-left .eyebrow { justify-content: center; }
+      .contact-left .eyebrow::before { display: block; }
+      .contact-details { align-items: center; }
+
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --nav-h: 64px; }
+      .nav-script { font-size: 1.6rem; }
+
+      .about-stats { flex-direction: column; gap: 0; }
+      .stat + .stat { border-left: none; border-top: var(--rule); padding-top: 20px; margin-top: 20px; }
+
+      .hero-ctas { flex-direction: column; }
+
+      .gallery-grid { gap: 6px; }
+      .form-card { padding: 24px 18px; }
+      .fr { grid-template-columns: 1fr; gap: 0; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-brand { text-align: center; }
+      .footer-socials { justify-content: center; }
+    }
+
+    section { scroll-margin-top: var(--nav-h); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-brand" aria-label="Baby Bird's Creamery">
+          <span class="nav-script">BabyBirds</span>
+
+        </a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-drawer" id="drawer">
+    <a href="#about">About</a>
+    <a href="#packages">Packages</a>
+    <a href="#how">How It Works</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-photo">
+        <picture>
+          <source media="(max-width: 640px)" srcset="../BabyBirdsCreamery/Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png 1024w" sizes="100vw" />
+          <img
+            src="../BabyBirdsCreamery/Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png"
+            srcset="../BabyBirdsCreamery/Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png 1024w"
+            sizes="100vw"
+            alt="Baby Bird's Creamery cart with lush coral florals in a garden"
+            width="1024" height="768"
+            loading="eager"
+          />
+        </picture>
+      </div>
+      <div class="hero-veil"></div>
+
+      <div class="hero-body">
+        <span class="hero-script">BabyBirds</span>
+
+        <div class="hero-rule" aria-hidden="true">
+          <span class="hero-rule-line rev"></span>
+          <span class="hero-rule-gem"></span>
+          <span class="hero-rule-line"></span>
+        </div>
+
+        <p class="hero-tagline">Your sweetest party moment, on wheels.</p>
+
+        <div class="hero-ctas">
+          <a href="#packages" class="btn btn-ghost">See Our Packages</a>
+        </div>
+        <a href="#about" class="hero-scroll">Discover the experience ↓</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="about-img reveal">
+            <img
+              src="../BabyBirdsCreamery/Bou_Job_Visual_A_man_and_a_childs_hands_hold_up_a_red_and_a_PPyWxBF0.png"
+              srcset="../BabyBirdsCreamery/Bou_Job_Visual_A_man_and_a_childs_hands_hold_up_a_red_and_a_PPyWxBF0.png 1200w"
+              sizes="(max-width: 640px) 100vw, 50vw"
+              alt="A parent and child each holding a colourful popsicle surrounded by flowers"
+              width="1200" height="1200" loading="lazy"
+            />
+          </div>
+
+          <div class="about-text">
+            <span class="eyebrow left reveal">Our Story</span>
+            <h2 class="h2 reveal d1">Bringing the Sweet<br>to Every Celebration</h2>
+            <div class="gold-bar reveal d1"></div>
+            <div class="about-body reveal d2">
+              <p>Baby Bird's Creamery is a boutique ice cream cart rental experience designed to make your celebration unforgettable — whether it's an intimate birthday gathering, a dreamy baby shower, an elegant wedding, a vibrant quinceañera, or a polished corporate event.</p>
+              <p>Based in Southern California, we bring charm, creativity, and sweetness right to your venue. Every detail is handled with care so you can focus on what matters most: celebrating the people you love.</p>
+              <p>We believe every event deserves one magical, delicious moment your guests talk about for years. That's exactly what we deliver — one scoop at a time.</p>
+            </div>
+            <div class="about-stats reveal d3">
+              <div class="stat">
+                <span class="stat-val">100+</span>
+                <span class="stat-lbl">Events Served</span>
+              </div>
+              <div class="stat">
+                <span class="stat-val">5 ★</span>
+                <span class="stat-lbl">Rated</span>
+              </div>
+              <div class="stat">
+                <span class="stat-val">SoCal</span>
+                <span class="stat-lbl">Southern California</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PACKAGES -->
+    <section id="packages">
+      <div class="wrap">
+        <div class="pkg-header">
+          <span class="eyebrow center reveal">Pricing &amp; Packages</span>
+          <h2 class="h2 reveal d1">Choose Your Sweet Experience</h2>
+          <div class="gold-bar center reveal d2"></div>
+          <p style="color:rgba(255,255,255,0.55);font-size:0.9rem;letter-spacing:0.06em;margin-top:10px;" class="reveal d2">Every package includes delivery &amp; pickup</p>
+        </div>
+
+        <div class="pkg-grid">
+
+          <!-- Bare Cart -->
+          <article class="pkg-card reveal" aria-label="The Bare Cart">
+            <div class="pkg-img">
+              <img src="../BabyBirdsCreamery/Bou_Job_Visual_An_open-top_white_ice_cream_cart_with_a_white_zANME_wM.png"
+                srcset="../BabyBirdsCreamery/Bou_Job_Visual_An_open-top_white_ice_cream_cart_with_a_white_zANME_wM.png 1200w"
+                sizes="(max-width:640px) 100vw, 33vw"
+                alt="Clean white ice cream cart in a sunny garden" width="1200" height="1600" loading="lazy" />
+            </div>
+            <div class="pkg-body">
+              <h3 class="pkg-name">The Bare Cart</h3>
+              <p class="pkg-price">$375</p>
+              <ul class="pkg-list">
+                <li>Cart rental only</li>
+                <li>Delivery &amp; pickup included</li>
+                <li>Up to 4 hours</li>
+                <li>You provide the treats &amp; styling</li>
+                <li>Perfect for the DIY host</li>
+              </ul>
+              <a href="#contact" class="btn btn-outline btn-w">Book This Package</a>
+            </div>
+          </article>
+
+          <!-- Sweet Spread — Featured -->
+          <article class="pkg-card featured reveal d1" aria-label="The Sweet Spread — most popular" style="position:relative;">
+            <span class="pkg-badge">⭐ Most Popular</span>
+            <div class="pkg-img">
+              <img src="../BabyBirdsCreamery/Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png"
+                srcset="../BabyBirdsCreamery/Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png 1024w"
+                sizes="(max-width:640px) 100vw, 33vw"
+                alt="Ice cream cart styled with a lush coral flower bouquet" width="1024" height="768" loading="lazy"
+                style="object-position:center 20%;" />
+            </div>
+            <div class="pkg-body">
+              <h3 class="pkg-name">The Sweet Spread</h3>
+              <p class="pkg-price" style="color:var(--green);">$549</p>
+              <ul class="pkg-list">
+                <li>Cart rental included</li>
+                <li>Curated premium desserts &amp; treats</li>
+                <li>Optional decorative accents (signage, florals, themed touches)</li>
+                <li>Delivery &amp; pickup included</li>
+                <li>Up to 4 hours</li>
+                <li>Everything you need for an Insta-worthy setup</li>
+              </ul>
+              <a href="#contact" class="btn btn-pink btn-w">Book This Package</a>
+            </div>
+          </article>
+
+          <!-- Full Scoop -->
+          <article class="pkg-card reveal d2" aria-label="The Full Scoop">
+            <div class="pkg-img">
+              <img src="../BabyBirdsCreamery/Bou_Job_Visual_A_close-up_high-angle_view_shows_a_white_cooler_KP2uGRTT.png"
+                srcset="../BabyBirdsCreamery/Bou_Job_Visual_A_close-up_high-angle_view_shows_a_white_cooler_KP2uGRTT.png 1200w"
+                sizes="(max-width:640px) 100vw, 33vw"
+                alt="Top-down view of colourful premium popsicles in a white cart" width="1200" height="1600" loading="lazy" />
+            </div>
+            <div class="pkg-body">
+              <h3 class="pkg-name">The Full Scoop</h3>
+              <p class="pkg-price">$949</p>
+              <ul class="pkg-list">
+                <li>Cart rental included</li>
+                <li>Premium desserts &amp; treats</li>
+                <li>Full styled decorations</li>
+                <li>Uniformed Baby Bird's attendant</li>
+                <li>Up to 3 hours of service</li>
+                <li>Sit back and enjoy the party</li>
+              </ul>
+              <a href="#contact" class="btn btn-outline btn-w">Book This Package</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how">
+      <div class="wrap">
+        <div class="how-header">
+          <span class="eyebrow center reveal">The Process</span>
+          <h2 class="h2 reveal d1" style="color:var(--white);">As Easy as 1, 2, Scoop</h2>
+        </div>
+        <div class="how-grid">
+          <div class="how-step reveal">
+            <p class="how-num">01</p>
+            <span class="how-icon">📅</span>
+            <h3 class="how-title">Book</h3>
+            <p class="how-desc">Choose your package and event date. We'll confirm within 24 hours and handle every detail from there.</p>
+          </div>
+          <div class="how-step reveal d1">
+            <p class="how-num">02</p>
+            <span class="how-icon">🛒</span>
+            <h3 class="how-title">We Set Up</h3>
+            <p class="how-desc">We arrive early, set up the cart, style the space, and make sure everything looks perfect before your first guest arrives.</p>
+          </div>
+          <div class="how-step reveal d2">
+            <p class="how-num">03</p>
+            <span class="how-icon">🎉</span>
+            <h3 class="how-title">You Celebrate</h3>
+            <p class="how-desc">Enjoy your event while your guests enjoy the sweetest moment of the party. All you have to do is smile.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events">
+      <div class="wrap">
+        <div class="events-header">
+          <span class="eyebrow center reveal">Perfect For</span>
+          <h2 class="h2 reveal d1">Perfect For Every Occasion</h2>
+          <div class="gold-bar center reveal d2"></div>
+        </div>
+        <div class="events-pills reveal d2">
+          <span class="pill rose">🎂 Birthdays</span>
+          <span class="pill sage">👶 Baby Showers</span>
+          <span class="pill gold">💍 Weddings</span>
+          <span class="pill rose">🌟 Quinceañeras</span>
+          <span class="pill sage">💼 Corporate Events</span>
+          <span class="pill rose">🎓 Graduation Parties</span>
+          <span class="pill gold">💐 Bridal Showers</span>
+          <span class="pill sage">🏫 School Events</span>
+          <span class="pill rose">🎄 Holiday Parties</span>
+          <span class="pill gold">🎀 Gender Reveals</span>
+        </div>
+        <div class="events-photo reveal d3">
+          <img src="../BabyBirdsCreamery/Bou_Job_Visual_In_a_soft-focus_outdoor_wedding_style_several_bepohbR2.png"
+            srcset="../BabyBirdsCreamery/Bou_Job_Visual_In_a_soft-focus_outdoor_wedding_style_several_bepohbR2.png 1200w"
+            sizes="100vw"
+            alt="Baby Bird's Creamery at an elegant outdoor wedding" width="1200" height="500" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="wrap">
+        <div class="gallery-header">
+          <span class="eyebrow center reveal">On The 'Gram</span>
+          <h2 class="h2 reveal d1">Follow Along for Sweetness</h2>
+          <p class="gallery-handle reveal d2">@babybirdscreamery</p>
+        </div>
+        <div class="gallery-grid reveal d2">
+          <div class="gallery-tile">
+            <img src="../BabyBirdsCreamery/Bou_Job_Visual_In_a_soft-focus_naturalistic_style_a_persons_hf3kY10O.png"
+              srcset="../BabyBirdsCreamery/Bou_Job_Visual_In_a_soft-focus_naturalistic_style_a_persons_hf3kY10O.png 1200w"
+              sizes="(max-width:640px) 33vw, 420px"
+              alt="Two hands holding a berry and chocolate popsicle amid roses" width="1200" height="1200" loading="lazy" />
+          </div>
+          <div class="gallery-tile">
+            <img src="../BabyBirdsCreamery/Bou_Job_Visual_In_a_close-up_shallow_depth_of_field_three_y-lpch6V.png"
+              srcset="../BabyBirdsCreamery/Bou_Job_Visual_In_a_close-up_shallow_depth_of_field_three_y-lpch6V.png 1200w"
+              sizes="(max-width:640px) 33vw, 420px"
+              alt="Close-up of fresh fruit popsicles" width="1200" height="1200" loading="lazy" />
+          </div>
+          <div class="gallery-tile">
+            <img src="../BabyBirdsCreamery/Bou_Job_Visual_A_man_and_a_childs_hands_hold_up_a_red_and_a_PPyWxBF0.png"
+              srcset="../BabyBirdsCreamery/Bou_Job_Visual_A_man_and_a_childs_hands_hold_up_a_red_and_a_PPyWxBF0.png 1200w"
+              sizes="(max-width:640px) 33vw, 420px"
+              alt="A parent and child holding popsicles at a garden party" width="1200" height="1200" loading="lazy" />
+          </div>
+        </div>
+        <div class="gallery-cta reveal d3">
+          <a href="#" class="btn-ig">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Follow Us on Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-grid">
+          <div class="contact-left reveal">
+            <span class="eyebrow left">Let's Make It Sweet</span>
+            <h2 class="h2" style="color:var(--white);margin-top:14px;">Ready to Sweeten<br>Your Event?</h2>
+            <p class="contact-desc" style="margin-top:18px;">Book your date today — sweet spots fill up fast. Fill out the form and we'll be in touch within 24 hours to confirm every detail.</p>
+            <div class="contact-details">
+              <div class="contact-detail"><span>📍</span><span>Serving Southern California</span></div>
+              <div class="contact-detail"><span>📸</span><span>@babybirdscreamery</span></div>
+              <div class="contact-detail"><span>⏱</span><span>Response within 24 hours</span></div>
+            </div>
+          </div>
+
+          <div class="form-card reveal d2">
+            <!--
+              GOOGLE SHEETS SETUP:
+              1. Create spreadsheet — Row 1 headers:
+                 Timestamp | Name | Email | Event Date | Event Type | Package Interest | Guest Count | Message
+              2. Extensions > Apps Script — paste doPost() from bottom of file
+              3. Deploy > Web App > Anyone can access
+              4. Paste URL into GOOGLE_SCRIPT_URL below
+            -->
+
+            <div id="form-success" class="form-success">
+              <div class="form-success-icon">🎉</div>
+              <h3>Thank you!</h3>
+              <p>We received your request and will be in touch within 24 hours. Get ready for the sweetest party!</p>
+            </div>
+
+            <h3 class="form-title">Send Your Request</h3>
+            <form id="booking-form" novalidate>
+
+              <div class="fg">
+                <label class="fl" for="f-name">Name <span class="req">*</span></label>
+                <input class="fi" type="text" id="f-name" name="name" placeholder="Your full name" required autocomplete="name" />
+              </div>
+
+              <div class="fr">
+                <div class="fg">
+                  <label class="fl" for="f-email">Email <span class="req">*</span></label>
+                  <input class="fi" type="email" id="f-email" name="email" placeholder="your@email.com" required autocomplete="email" />
+                </div>
+                <div class="fg">
+                  <label class="fl" for="f-date">Event Date <span class="req">*</span></label>
+                  <input class="fi" type="date" id="f-date" name="eventDate" required />
+                </div>
+              </div>
+
+              <div class="fr">
+                <div class="fg">
+                  <label class="fl" for="f-guests">Guest Count <span class="req">*</span></label>
+                  <input class="fi" type="number" id="f-guests" name="guestCount" placeholder="Est. guests" min="1" required />
+                </div>
+                <div class="fg">
+                  <label class="fl" for="f-type">Event Type <span class="req">*</span></label>
+                  <select class="fs" id="f-type" name="eventType" required>
+                    <option value="" disabled selected>Select type...</option>
+                    <option>Birthday</option>
+                    <option>Baby Shower</option>
+                    <option>Wedding</option>
+                    <option>Quinceañera</option>
+                    <option>Corporate Event</option>
+                    <option>Graduation</option>
+                    <option>Bridal Shower</option>
+                    <option>Gender Reveal</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="fg">
+                <label class="fl" for="f-pkg">Package Interest <span class="req">*</span></label>
+                <select class="fs" id="f-pkg" name="packageInterest" required>
+                  <option value="" disabled selected>Select a package...</option>
+                  <option>The Bare Cart — $375</option>
+                  <option>The Sweet Spread — $549 (Most Popular)</option>
+                  <option>The Full Scoop — $949</option>
+                  <option>Not Sure Yet</option>
+                </select>
+              </div>
+
+              <div class="fg">
+                <label class="fl" for="f-msg">About Your Event <span style="color:var(--text-light);font-weight:400;letter-spacing:0;text-transform:none;">(optional)</span></label>
+                <textarea class="ft" id="f-msg" name="message" placeholder="Venue, theme, anything we should know…" rows="4"></textarea>
+              </div>
+
+              <div id="form-err" class="form-err" role="alert" aria-live="polite">Something went wrong. Please try again shortly.</div>
+
+              <button type="submit" id="submit-btn" class="btn-submit">
+                <span class="btn-label">Send My Request</span>
+                <div class="spin"></div>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-script">BabyBirds</span>
+          <span class="footer-sub">Ice Cream &nbsp;·&nbsp; Southern California</span>
+          <p class="footer-tagline">"Your sweetest party moment, on wheels."</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Instagram">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" aria-label="TikTok">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigate</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Events</h4>
+          <ul class="footer-links">
+            <li><span>Birthdays</span></li>
+            <li><span>Baby Showers</span></li>
+            <li><span>Weddings</span></li>
+            <li><span>Quinceañeras</span></li>
+            <li><span>Corporate Events</span></li>
+            <li><span>Graduations</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Find Us</h4>
+          <ul class="footer-links">
+            <li><span>📍 Southern California</span></li>
+            <li><span>📸 @babybirdscreamery</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Baby Bird's Creamery. All rights reserved. Southern California.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    'use strict';
+
+    const GOOGLE_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+
+    /* Nav */
+    const nav  = document.getElementById('nav');
+    const links = document.querySelectorAll('.nav-links a');
+    const sects = document.querySelectorAll('main section[id]');
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+      let cur = '';
+      sects.forEach(s => { if (s.getBoundingClientRect().top <= 100) cur = s.id; });
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href').slice(1) === cur));
+    }, { passive: true });
+
+    /* Burger */
+    const burger = document.getElementById('burger');
+    const drawer = document.getElementById('drawer');
+
+    burger.addEventListener('click', () => {
+      const open = drawer.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+    document.addEventListener('click', e => { if (!nav.contains(e.target) && !drawer.contains(e.target)) closeDrawer(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+    /* Reveal on scroll */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* Date min */
+    const df = document.getElementById('f-date');
+    if (df) { const t = new Date(); df.min = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`; }
+
+    /* Form */
+    const form   = document.getElementById('booking-form');
+    const subBtn = document.getElementById('submit-btn');
+    const fSucc  = document.getElementById('form-success');
+    const fErr   = document.getElementById('form-err');
+
+    if (form) {
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        fErr.style.display = 'none';
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+
+        subBtn.disabled = true;
+        subBtn.classList.add('loading');
+
+        const data = {
+          name:            form.querySelector('[name="name"]').value.trim(),
+          email:           form.querySelector('[name="email"]').value.trim(),
+          eventDate:       form.querySelector('[name="eventDate"]').value,
+          eventType:       form.querySelector('[name="eventType"]').value,
+          packageInterest: form.querySelector('[name="packageInterest"]').value,
+          guestCount:      form.querySelector('[name="guestCount"]').value,
+          message:         form.querySelector('[name="message"]').value.trim(),
+        };
+
+        try {
+          await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST', mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          form.style.display = 'none';
+          fSucc.style.display = 'block';
+        } catch {
+          fErr.style.display = 'block';
+          subBtn.disabled = false;
+          subBtn.classList.remove('loading');
+        }
+      });
+    }
+
+    /* Smooth scroll */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        const t = document.querySelector(this.getAttribute('href'));
+        if (!t) return;
+        e.preventDefault();
+        const h = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'));
+        window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - h, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+<!--
+======================================================================
+GOOGLE APPS SCRIPT — paste into Extensions > Apps Script:
+
+function doPost(e) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const data  = JSON.parse(e.postData.contents);
+  sheet.appendRow([new Date(), data.name, data.email, data.eventDate,
+    data.eventType, data.packageInterest, data.guestCount, data.message]);
+  return ContentService
+    .createTextOutput(JSON.stringify({ result: 'success' }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+HEADERS (Row 1):
+Timestamp | Name | Email | Event Date | Event Type | Package Interest | Guest Count | Message
+======================================================================
+-->
