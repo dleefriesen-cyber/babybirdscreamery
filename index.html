@@ -1603,6 +1603,12 @@
             <h3 class="form-title">Send Your Request</h3>
             <form id="booking-form" novalidate>
 
+              <!-- Honeypot: hidden from real users, bots fill it in → rejected -->
+              <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;" aria-hidden="true">
+                <label for="f-website">Website (leave blank)</label>
+                <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+
               <div class="fg">
                 <label class="fl" for="f-name">Name <span class="req">*</span></label>
                 <input class="fi" type="text" id="f-name" name="name" placeholder="Your full name" required autocomplete="name" />
@@ -1740,6 +1746,9 @@
     'use strict';
 
     const GOOGLE_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+
+    /* Spam protection: record when the form section came into view */
+    const formLoadTime = Date.now();
 
     /* Nav */
     const nav  = document.getElementById('nav');
@@ -1888,6 +1897,21 @@
       form.addEventListener('submit', async e => {
         e.preventDefault();
         fErr.style.display = 'none';
+
+        /* Spam check 1: honeypot — if bot filled in the hidden field, silently drop */
+        if (form.querySelector('[name="website"]').value) {
+          form.style.display = 'none';
+          fSucc.style.display = 'block'; /* Fake success so bots don't retry */
+          return;
+        }
+
+        /* Spam check 2: time — real humans take more than 4 seconds to fill out a form */
+        if (Date.now() - formLoadTime < 4000) {
+          fErr.textContent = 'Please take a moment to fill out all fields carefully.';
+          fErr.style.display = 'block';
+          return;
+        }
+
         if (!form.checkValidity()) { form.reportValidity(); return; }
 
         subBtn.disabled = true;
