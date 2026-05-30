@@ -1,117 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 68" fill="none">
-  <defs>
-    <!-- Drop shadow filter -->
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#00000044"/>
-    </filter>
-    <!-- Subtle inner glow on scoop -->
-    <radialGradient id="scoopGrad" cx="40%" cy="35%" r="60%">
-      <stop offset="0%" stop-color="#E8998E"/>
-      <stop offset="100%" stop-color="#B8605A"/>
-    </radialGradient>
-    <radialGradient id="coneGrad" cx="50%" cy="20%" r="80%">
-      <stop offset="0%" stop-color="#EDD99A"/>
-      <stop offset="100%" stop-color="#C8A060"/>
-    </radialGradient>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
 
-  <!-- ── ICE CREAM CONE (center) ─────────────────────── -->
-  <g filter="url(#shadow)">
-    <!-- Cone shadow layer -->
-    <path d="M88 32 L100 58 L112 32 Z" fill="#A87840" opacity="0.4" transform="translate(1,1.5)"/>
-    <!-- Cone -->
-    <path d="M88 32 L100 58 L112 32 Z" fill="url(#coneGrad)" stroke="#B8965A" stroke-width="1.2" stroke-linejoin="round"/>
-    <!-- Waffle grid -->
-    <line x1="90.5" y1="38" x2="109.5" y2="38" stroke="#B8965A" stroke-width="1" opacity="0.6"/>
-    <line x1="92"   y1="44" x2="108"   y2="44" stroke="#B8965A" stroke-width="1" opacity="0.6"/>
-    <line x1="95.5" y1="32" x2="89.5"  y2="50" stroke="#B8965A" stroke-width="1" opacity="0.5"/>
-    <line x1="101"  y1="32" x2="100"   y2="58" stroke="#B8965A" stroke-width="1" opacity="0.5"/>
-    <line x1="106.5" y1="32" x2="110.5" y2="50" stroke="#B8965A" stroke-width="1" opacity="0.5"/>
+  <!-- Circle background -->
+  <circle cx="60" cy="60" r="55" fill="#F2EDE4"/>
+  <circle cx="60" cy="60" r="55" fill="none" stroke="#C9A84C" stroke-width="4.5"/>
 
-    <!-- Scoop shadow -->
-    <circle cx="100" cy="22" r="13" fill="#9A4840" opacity="0.25" transform="translate(1,2)"/>
-    <!-- Scoop -->
-    <circle cx="100" cy="22" r="13" fill="url(#scoopGrad)" stroke="#C86060" stroke-width="1.5"/>
-    <!-- Scoop highlight -->
-    <circle cx="95"  cy="17" r="4"  fill="white" opacity="0.22"/>
-    <circle cx="93"  cy="16" r="1.5" fill="white" opacity="0.35"/>
-    <!-- Sprinkles -->
-    <rect x="96" y="18" width="4" height="1.2" rx="0.6" fill="white" opacity="0.5" transform="rotate(-20 98 18.6)"/>
-    <rect x="102" y="22" width="3.5" height="1.2" rx="0.6" fill="#DEC98A" opacity="0.7" transform="rotate(15 103.75 22.6)"/>
-    <rect x="98" y="25" width="3" height="1.2" rx="0.6" fill="white" opacity="0.4" transform="rotate(30 99.5 25.6)"/>
+  <!-- Branch -->
+  <path d="M12 90 Q38 84 70 76" stroke="#8B7035" stroke-width="3.8" stroke-linecap="round" fill="none"/>
+
+  <!-- Leaves hanging off branch -->
+  <ellipse cx="22" cy="91" rx="6.5" ry="2.5" fill="#2B6358" transform="rotate(-22 22 91)"/>
+  <ellipse cx="32" cy="89" rx="6" ry="2.3" fill="#2B6358" transform="rotate(-16 32 89)"/>
+  <ellipse cx="43" cy="87" rx="5.5" ry="2.2" fill="#2B6358" transform="rotate(-10 43 87)"/>
+  <ellipse cx="62" cy="82" rx="5.5" ry="2.2" fill="#2B6358" transform="rotate(-4 62 82)"/>
+  <ellipse cx="73" cy="79" rx="5" ry="2" fill="#2B6358" transform="rotate(8 73 79)"/>
+  <ellipse cx="82" cy="77" rx="5" ry="2" fill="#2B6358" transform="rotate(14 82 77)"/>
+
+  <!-- Tail (long, elegant, sweeping left-down) -->
+  <path d="M33 67 Q20 76 14 90 Q23 84 36 76 Z" fill="#2B6358"/>
+  <path d="M33 67 Q19 79 15 93 Q25 86 37 79 Z" fill="#2B6358" opacity="0.55"/>
+
+  <!-- Body base (salmon/coral) -->
+  <ellipse cx="50" cy="65" rx="21" ry="13" fill="#E07860" transform="rotate(-8 50 65)"/>
+
+  <!-- Wing + back (dark teal) covers upper body -->
+  <path d="M28 61 Q48 47 70 57 Q67 69 48 73 Q35 72 28 63 Z" fill="#2B6358"/>
+
+  <!-- Wing feather detail lines -->
+  <path d="M34 63 Q50 55 67 62" stroke="#F2EDE4" stroke-width="1" fill="none" opacity="0.45"/>
+  <path d="M35 68 Q51 60 66 66" stroke="#F2EDE4" stroke-width="1" fill="none" opacity="0.35"/>
+  <path d="M36 72 Q50 64 64 69" stroke="#F2EDE4" stroke-width="1" fill="none" opacity="0.22"/>
+
+  <!-- Belly (cream/peach) -->
+  <ellipse cx="50" cy="71" rx="10.5" ry="6.5" fill="#F2D8B8" transform="rotate(-8 50 71)"/>
+
+  <!-- Head (salmon base) -->
+  <circle cx="63" cy="53" r="12.5" fill="#E07860"/>
+
+  <!-- Dark teal cap on head -->
+  <path d="M51 49 Q63 39 75 49 Q75 53 63 54 Q51 54 51 49 Z" fill="#2B6358"/>
+
+  <!-- Teal neck join connecting to wing -->
+  <path d="M51 53 Q53 60 57 64 Q49 66 44 61 Q44 55 51 53 Z" fill="#2B6358"/>
+
+  <!-- Eye -->
+  <circle cx="68" cy="51" r="3" fill="#1A2820"/>
+  <circle cx="69" cy="50.1" r="1" fill="white"/>
+
+  <!-- Beak -->
+  <path d="M74 55.5 L86 52 L74 58.5 Z" fill="#8B7035"/>
+
+  <!-- Popsicle held in beak -->
+  <g transform="rotate(-22 86 47)">
+    <!-- Popsicle body -->
+    <rect x="82" y="33" width="12" height="22" rx="3" fill="#E07860"/>
+    <!-- Groove lines on popsicle -->
+    <line x1="86.5" y1="37" x2="86.5" y2="52" stroke="#C06050" stroke-width="1.3" opacity="0.35"/>
+    <line x1="90.5" y1="37" x2="90.5" y2="52" stroke="#C06050" stroke-width="1.3" opacity="0.35"/>
+    <!-- Popsicle stick -->
+    <rect x="85.5" y="54" width="4.5" height="12" rx="1.8" fill="#C9A84C"/>
   </g>
 
-  <!-- ── LEFT BIRD ────────────────────────────────────── -->
-  <g filter="url(#shadow)">
-    <!-- Body shadow -->
-    <ellipse cx="67" cy="36" rx="14" ry="11" fill="#00000022" transform="translate(1,2)"/>
-    <!-- Body -->
-    <ellipse cx="67" cy="36" rx="14" ry="11" fill="white" stroke="white" stroke-width="0.5"/>
-    <!-- Head shadow -->
-    <circle cx="77" cy="25" r="10" fill="#00000022" transform="translate(1,2)"/>
-    <!-- Head -->
-    <circle cx="77" cy="25" r="10" fill="white" stroke="white" stroke-width="0.5"/>
-    <!-- Wing -->
-    <path d="M57 36 Q47 30 50 41 Q54 46 64 42 Z" fill="white" stroke="rgba(200,200,200,0.5)" stroke-width="0.8"/>
-    <!-- Wing feather detail -->
-    <path d="M57 36 Q50 34 51 39" stroke="rgba(180,180,180,0.6)" stroke-width="0.8" fill="none"/>
-    <!-- Tail -->
-    <path d="M56 39 Q49 43 50 49 Q54 44 60 43 Z" fill="white" stroke="rgba(200,200,200,0.4)" stroke-width="0.7"/>
-    <!-- Tummy shading -->
-    <ellipse cx="68" cy="39" rx="8" ry="6" fill="rgba(200,185,185,0.18)"/>
-    <!-- Eye white -->
-    <circle cx="80" cy="22.5" r="3"  fill="#2E3D38"/>
-    <circle cx="81" cy="21.8" r="1"  fill="white"/>
-    <circle cx="80.4" cy="23.2" r="0.4" fill="white" opacity="0.6"/>
-    <!-- Beak -->
-    <path d="M85 25.5 L92 27.5 L85 29.5 Z" fill="#DEC98A" stroke="#C8A060" stroke-width="0.6" stroke-linejoin="round"/>
-    <!-- Cheek blush -->
-    <ellipse cx="79" cy="28" rx="3.5" ry="2.2" fill="#C8796E" opacity="0.28"/>
-    <!-- Head tuft -->
-    <path d="M74 16 Q76 10 78 16" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
-    <circle cx="76" cy="11" r="2" fill="white"/>
-    <!-- Feet -->
-    <path d="M63 46 L61 53 M63 46 L63 53 M63 46 L65.5 53" stroke="rgba(200,180,140,0.9)" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M71 47 L69 54 M71 47 L71 54 M71 47 L73.5 54" stroke="rgba(200,180,140,0.9)" stroke-width="1.5" stroke-linecap="round"/>
-  </g>
-
-  <!-- ── RIGHT BIRD (mirrored) ────────────────────────── -->
-  <g filter="url(#shadow)">
-    <!-- Body -->
-    <ellipse cx="143" cy="36" rx="14" ry="11" fill="#00000022" transform="translate(-1,2)"/>
-    <ellipse cx="143" cy="36" rx="14" ry="11" fill="white" stroke="white" stroke-width="0.5"/>
-    <!-- Head -->
-    <circle cx="133" cy="25" r="10" fill="#00000022" transform="translate(-1,2)"/>
-    <circle cx="133" cy="25" r="10" fill="white" stroke="white" stroke-width="0.5"/>
-    <!-- Wing -->
-    <path d="M153 36 Q163 30 160 41 Q156 46 146 42 Z" fill="white" stroke="rgba(200,200,200,0.5)" stroke-width="0.8"/>
-    <path d="M153 36 Q160 34 159 39" stroke="rgba(180,180,180,0.6)" stroke-width="0.8" fill="none"/>
-    <!-- Tail -->
-    <path d="M154 39 Q161 43 160 49 Q156 44 150 43 Z" fill="white" stroke="rgba(200,200,200,0.4)" stroke-width="0.7"/>
-    <!-- Tummy shading -->
-    <ellipse cx="142" cy="39" rx="8" ry="6" fill="rgba(200,185,185,0.18)"/>
-    <!-- Eye -->
-    <circle cx="130" cy="22.5" r="3"  fill="#2E3D38"/>
-    <circle cx="131" cy="21.8" r="1"  fill="white"/>
-    <circle cx="130.4" cy="23.2" r="0.4" fill="white" opacity="0.6"/>
-    <!-- Beak (mirrored) -->
-    <path d="M125 25.5 L118 27.5 L125 29.5 Z" fill="#DEC98A" stroke="#C8A060" stroke-width="0.6" stroke-linejoin="round"/>
-    <!-- Cheek blush -->
-    <ellipse cx="131" cy="28" rx="3.5" ry="2.2" fill="#C8796E" opacity="0.28"/>
-    <!-- Head tuft -->
-    <path d="M136 16 Q134 10 132 16" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
-    <circle cx="134" cy="11" r="2" fill="white"/>
-    <!-- Feet -->
-    <path d="M137 46 L135 53 M137 46 L137 53 M137 46 L139.5 53" stroke="rgba(200,180,140,0.9)" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M145 47 L143 54 M145 47 L145 54 M145 47 L147.5 54" stroke="rgba(200,180,140,0.9)" stroke-width="1.5" stroke-linecap="round"/>
-  </g>
-
-  <!-- ── Sparkles ────────────────────────────────────── -->
-  <circle cx="40" cy="20" r="1.8" fill="#C8796E" opacity="0.7"/>
-  <circle cx="36" cy="30" r="1.1" fill="#DEC98A" opacity="0.6"/>
-  <circle cx="170" cy="20" r="1.8" fill="#C8796E" opacity="0.7"/>
-  <circle cx="174" cy="30" r="1.1" fill="#DEC98A" opacity="0.6"/>
-  <circle cx="44" cy="12" r="0.8" fill="white" opacity="0.5"/>
-  <circle cx="166" cy="12" r="0.8" fill="white" opacity="0.5"/>
+  <!-- Feet/talons gripping branch -->
+  <path d="M43 78 L39 87 M43 78 L43 87 M43 78 L47 86" stroke="#8B7035" stroke-width="2" stroke-linecap="round"/>
+  <path d="M54 75 L50 84 M54 75 L54 84 M54 75 L58 83" stroke="#8B7035" stroke-width="2" stroke-linecap="round"/>
 
 </svg>
