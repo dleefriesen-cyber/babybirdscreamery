@@ -43,7 +43,7 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--font-sans); background: var(--green); color: var(--white); line-height: 1.7; overflow-x: hidden; }
+    body { font-family: var(--font-sans); background: var(--green-dark); color: var(--white); line-height: 1.7; overflow-x: hidden; }
     img { display: block; max-width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
     ul { list-style: none; }
@@ -141,7 +141,7 @@
       border: 1px solid var(--green-dark);
     }
     .btn-dark:hover {
-      background: var(--green);
+      background: var(--green-dark);
       border-color: var(--green);
       transform: translateY(-2px);
       box-shadow: 0 8px 28px rgba(36,60,52,0.25);
@@ -170,10 +170,11 @@
     }
     .btn-ghost {
       background: var(--pink);
-      color: var(--white);
+      color: #ffffff;
       border: 1px solid var(--pink);
-      text-shadow: 0 1px 6px rgba(0,0,0,0.35);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.55);
       box-shadow: 0 4px 24px rgba(0,0,0,0.40);
+      font-weight: 700;
     }
     .btn-ghost:hover {
       background: var(--pink-dark);
@@ -322,6 +323,8 @@
       justify-content: center;
       text-align: center;
       overflow: hidden;
+      -webkit-mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
     }
 
     .hero-photo {
@@ -339,11 +342,12 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at center, rgba(20,32,28,0.45) 0%, rgba(20,32,28,0.72) 100%),
+        radial-gradient(ellipse at center, rgba(20,32,28,0.28) 0%, rgba(20,32,28,0.55) 100%),
         linear-gradient(to bottom,
-          rgba(20,32,28,0.75) 0%,
-          rgba(20,32,28,0.60) 40%,
-          rgba(20,32,28,0.85) 100%);
+          rgba(20,32,28,0.55) 0%,
+          rgba(20,32,28,0.38) 35%,
+          rgba(20,32,28,0.70) 80%,
+          rgba(20,32,28,1.00) 100%);
       z-index: 1;
     }
 
@@ -397,7 +401,8 @@
       letter-spacing: 0.75em;
       text-transform: uppercase;
       color: #ffffff;
-      margin-top: 24px;
+      margin-top: 36px;
+      padding-top: 12px;
       text-shadow: 0 2px 16px rgba(0,0,0,0.70);
     }
 
@@ -454,7 +459,24 @@
     .hero-scroll:hover { color: rgba(255,255,255,0.75); }
 
     /* ── ABOUT ───────────────────────────────────────────── */
-    #about { padding-block: var(--pad); background: var(--green); }
+    #about { padding-block: 0; background: var(--green-dark); }
+
+    .about-banner {
+      width: 100%;
+      max-height: clamp(340px, 50vw, 620px);
+      overflow: hidden;
+    }
+    .about-banner img {
+      width: 100%;
+      height: clamp(340px, 50vw, 620px);
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+    }
+
+    .about-content {
+      padding-block: var(--pad);
+    }
 
     .about-grid {
       display: grid;
@@ -516,7 +538,7 @@
     /* ── PACKAGES ────────────────────────────────────────── */
     #packages {
       padding-block: var(--pad);
-      background: var(--green-mid);
+      background: var(--green-dark);
       border-top: var(--rule);
       border-bottom: var(--rule);
     }
@@ -621,6 +643,7 @@
       padding: 7px 0;
       border-bottom: 1px solid rgba(255,255,255,0.07);
       line-height: 1.5;
+      transition: color 0.4s ease, background 0.4s ease, padding-left 0.4s ease, opacity 0.4s ease;
     }
     .pkg-list li:last-child { border-bottom: none; }
     .pkg-list li::before {
@@ -629,6 +652,65 @@
       font-size: 0.8rem;
       flex-shrink: 0;
       margin-top: 1px;
+      transition: color 0.4s ease, content 0.4s ease;
+    }
+
+    /* Compare mode styles */
+    .pkg-compare-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .pkg-compare-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 9999px;
+      padding: 10px 28px;
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.3s ease;
+    }
+    .pkg-compare-btn:hover {
+      color: var(--white);
+      border-color: rgba(184,150,90,0.5);
+    }
+    .pkg-compare-btn.active {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(184,150,90,0.08);
+    }
+    .compare-icon { font-size: 0.9rem; transition: transform 0.4s ease; }
+    .pkg-compare-btn.active .compare-icon { transform: rotate(45deg); }
+    .compare-hint {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.28);
+      text-transform: uppercase;
+    }
+
+    /* When compare mode is on */
+    #pkgGrid.comparing .pkg-list li[data-shared="true"] {
+      opacity: 0.28;
+    }
+    #pkgGrid.comparing .pkg-list li[data-unique="true"] {
+      color: var(--white);
+      padding-left: 6px;
+      background: rgba(184,150,90,0.07);
+      border-radius: 3px;
+    }
+    #pkgGrid.comparing .pkg-list li[data-unique="true"]::before {
+      content: '✦';
+      color: var(--gold);
     }
 
     /* ── HOW IT WORKS ────────────────────────────────────── */
@@ -685,7 +767,7 @@
     .how-desc { font-size: 0.92rem; color: rgba(255,255,255,0.58); line-height: 1.8; }
 
     /* ── EVENTS ──────────────────────────────────────────── */
-    #events { padding-block: var(--pad); background: var(--green); }
+    #events { padding-block: var(--pad); background: var(--green-dark); }
 
     .events-header { text-align: center; margin-bottom: 52px; color: var(--white); }
     .events-header > * + * { margin-top: 16px; }
@@ -726,7 +808,7 @@
     /* ── GALLERY ─────────────────────────────────────────── */
     #gallery {
       padding-block: var(--pad);
-      background: var(--green-mid);
+      background: var(--green-dark);
       border-top: var(--rule);
       border-bottom: var(--rule);
     }
@@ -899,7 +981,7 @@
       transition: background var(--t), transform var(--t), box-shadow var(--t);
     }
     .btn-submit:hover:not(:disabled) {
-      background: var(--green);
+      background: var(--green-dark);
       transform: translateY(-1px);
       box-shadow: 0 8px 24px rgba(36,60,52,0.28);
     }
@@ -1135,43 +1217,44 @@
 
     <!-- ABOUT -->
     <section id="about">
-      <div class="wrap">
-        <div class="about-grid">
-          <div class="about-img reveal">
-            <img
-              src="./Bou_Job_Visual_In_a_garden_party_setting_during_golden_hour_a_6tmPO0As.png"
-              srcset="./Bou_Job_Visual_In_a_garden_party_setting_during_golden_hour_a_6tmPO0As.png 1200w"
-              sizes="(max-width: 640px) 100vw, 50vw"
-              alt="A parent and child each holding a colourful popsicle surrounded by flowers"
-              width="1200" height="1200" loading="lazy"
-            />
-          </div>
-
-          <div class="about-text">
-            <span class="eyebrow left reveal">Our Story</span>
-            <h2 class="h2 reveal d1">Bringing the Sweet<br>to Every Celebration</h2>
-            <div class="gold-bar reveal d1"></div>
-            <div class="about-body reveal d2">
-              <p>Baby Bird's Creamery is a boutique ice cream cart rental experience designed to make your celebration unforgettable — whether it's an intimate birthday gathering, a dreamy baby shower, an elegant wedding, a vibrant quinceañera, or a polished corporate event.</p>
-              <p>Based in Southern California, we bring charm, creativity, and sweetness right to your venue. Every detail is handled with care so you can focus on what matters most: celebrating the people you love.</p>
-              <p>We believe every event deserves one magical, delicious moment your guests talk about for years. That's exactly what we deliver — one scoop at a time.</p>
-            </div>
-            <div class="about-stats reveal d3">
-              <div class="stat">
-                <span class="stat-val">100+</span>
-                <span class="stat-lbl">Events Served</span>
+      <div class="about-content">
+        <div class="wrap">
+          <div class="about-grid">
+            <div class="about-text" style="grid-column: 1 / -1; max-width: 760px; margin-inline: auto; text-align: center;">
+              <span class="eyebrow center reveal">Our Story</span>
+              <h2 class="h2 reveal d1">Bringing the Sweet<br>to Every Celebration</h2>
+              <div class="gold-bar center reveal d1"></div>
+              <div class="about-body reveal d2">
+                <p>Baby Bird's Creamery is a boutique ice cream cart rental experience designed to make your celebration unforgettable — whether it's an intimate birthday gathering, a dreamy baby shower, an elegant wedding, a vibrant quinceañera, or a polished corporate event.</p>
+                <p>Based in Southern California, we bring charm, creativity, and sweetness right to your venue. Every detail is handled with care so you can focus on what matters most: celebrating the people you love.</p>
+                <p>We believe every event deserves one magical, delicious moment your guests talk about for years. That's exactly what we deliver — one scoop at a time.</p>
               </div>
-              <div class="stat">
-                <span class="stat-val">5 ★</span>
-                <span class="stat-lbl">Rated</span>
-              </div>
-              <div class="stat">
-                <span class="stat-val">SoCal</span>
-                <span class="stat-lbl">Southern California</span>
+              <div class="about-stats reveal d3" style="justify-content: center;">
+                <div class="stat">
+                  <span class="stat-val">100+</span>
+                  <span class="stat-lbl">Events Served</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-val">5 ★</span>
+                  <span class="stat-lbl">Rated</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-val">SoCal</span>
+                  <span class="stat-lbl">Southern California</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="about-banner">
+        <img
+          src="./Bou_Job_Visual_In_a_garden_party_setting_during_golden_hour_a_6tmPO0As.png"
+          srcset="./Bou_Job_Visual_In_a_garden_party_setting_during_golden_hour_a_6tmPO0As.png 1200w"
+          sizes="100vw"
+          alt="Guests gathered around an ice cream cart at a garden party during golden hour"
+          width="1200" height="800" loading="lazy"
+        />
       </div>
     </section>
 
@@ -1185,7 +1268,16 @@
           <p style="color:rgba(255,255,255,0.55);font-size:0.9rem;letter-spacing:0.06em;margin-top:10px;" class="reveal d2">Every package includes delivery &amp; pickup</p>
         </div>
 
-        <div class="pkg-grid">
+        <!-- Compare toggle -->
+        <div class="pkg-compare-wrap reveal d3">
+          <button class="pkg-compare-btn" id="compareBtn" aria-pressed="false">
+            <span class="compare-icon">◈</span>
+            <span class="compare-label">Compare Packages</span>
+          </button>
+          <span class="compare-hint">See what's unique to each tier</span>
+        </div>
+
+        <div class="pkg-grid" id="pkgGrid">
 
           <!-- Bare Cart -->
           <article class="pkg-card reveal" aria-label="The Bare Cart">
@@ -1197,13 +1289,13 @@
             </div>
             <div class="pkg-body">
               <h3 class="pkg-name">The Bare Cart</h3>
-              <p class="pkg-price">$375</p>
+              <p class="pkg-price" data-price="375">$0</p>
               <ul class="pkg-list">
-                <li>Cart rental only</li>
-                <li>Delivery &amp; pickup included</li>
-                <li>Up to 4 hours</li>
-                <li>You provide the treats &amp; styling</li>
-                <li>Perfect for the DIY host</li>
+                <li data-shared="true">Cart rental included</li>
+                <li data-shared="true">Delivery &amp; pickup included</li>
+                <li data-shared="true">Up to 4 hours</li>
+                <li data-unique="true">You provide the treats &amp; styling</li>
+                <li data-unique="true">Perfect for the DIY host</li>
               </ul>
               <a href="#contact" class="btn btn-outline btn-w">Book This Package</a>
             </div>
@@ -1221,14 +1313,14 @@
             </div>
             <div class="pkg-body">
               <h3 class="pkg-name">The Sweet Spread</h3>
-              <p class="pkg-price" style="color:var(--green);">$549</p>
+              <p class="pkg-price" data-price="549">$0</p>
               <ul class="pkg-list">
-                <li>Cart rental included</li>
-                <li>Curated premium desserts &amp; treats</li>
-                <li>Optional decorative accents (signage, florals, themed touches)</li>
-                <li>Delivery &amp; pickup included</li>
-                <li>Up to 4 hours</li>
-                <li>Everything you need for an Insta-worthy setup</li>
+                <li data-shared="true">Cart rental included</li>
+                <li data-unique="true">Curated premium desserts &amp; treats</li>
+                <li data-unique="true">Optional decorative accents (signage, florals, themed touches)</li>
+                <li data-shared="true">Delivery &amp; pickup included</li>
+                <li data-shared="true">Up to 4 hours</li>
+                <li data-unique="true">Everything you need for an Insta-worthy setup</li>
               </ul>
               <a href="#contact" class="btn btn-pink btn-w">Book This Package</a>
             </div>
@@ -1244,14 +1336,14 @@
             </div>
             <div class="pkg-body">
               <h3 class="pkg-name">The Full Scoop</h3>
-              <p class="pkg-price">$949</p>
+              <p class="pkg-price" data-price="949">$0</p>
               <ul class="pkg-list">
-                <li>Cart rental included</li>
-                <li>Premium desserts &amp; treats</li>
-                <li>Full styled decorations</li>
-                <li>Uniformed Baby Bird's attendant</li>
-                <li>Up to 3 hours of service</li>
-                <li>Sit back and enjoy the party</li>
+                <li data-shared="true">Cart rental included</li>
+                <li data-shared="true">Premium desserts &amp; treats</li>
+                <li data-unique="true">Full styled decorations</li>
+                <li data-unique="true">Uniformed Baby Bird's attendant</li>
+                <li data-shared="true">Up to 3 hours of service</li>
+                <li data-unique="true">Sit back and enjoy the party</li>
               </ul>
               <a href="#contact" class="btn btn-outline btn-w">Book This Package</a>
             </div>
@@ -1568,6 +1660,64 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* Price count-up animation */
+    const priceEls = document.querySelectorAll('.pkg-price[data-price]');
+    const countUp = (el) => {
+      const target = parseInt(el.dataset.price);
+      const duration = 900;
+      const start = performance.now();
+      const tick = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = '$' + Math.floor(ease * target);
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = '$' + target;
+      };
+      requestAnimationFrame(tick);
+    };
+    const priceObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { countUp(e.target); priceObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    priceEls.forEach(el => priceObserver.observe(el));
+
+    /* 3D tilt on package cards */
+    document.querySelectorAll('.pkg-card').forEach(card => {
+      card.style.transformStyle = 'preserve-3d';
+      card.style.willChange = 'transform';
+      const isFeatured = card.classList.contains('featured');
+
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width  - 0.5;
+        const y = (e.clientY - r.top)  / r.height - 0.5;
+        const tiltX = (-y * 10).toFixed(2);
+        const tiltY = ( x * 10).toFixed(2);
+        const scale = isFeatured ? 1.05 : 1.02;
+        card.style.transform = `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(${scale})`;
+        card.style.boxShadow = `${-tiltY * 2}px ${tiltX * 2}px 40px rgba(0,0,0,0.35), 0 20px 60px rgba(0,0,0,0.20)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = isFeatured ? 'scale(1.03)' : '';
+        card.style.boxShadow = '';
+      });
+    });
+
+    /* Compare packages toggle */
+    const compareBtn = document.getElementById('compareBtn');
+    const pkgGrid = document.getElementById('pkgGrid');
+    if (compareBtn && pkgGrid) {
+      compareBtn.addEventListener('click', () => {
+        const active = pkgGrid.classList.toggle('comparing');
+        compareBtn.classList.toggle('active', active);
+        compareBtn.setAttribute('aria-pressed', active);
+        compareBtn.querySelector('.compare-label').textContent = active ? 'Hide Comparison' : 'Compare Packages';
+      });
+    }
 
     /* Date min */
     const df = document.getElementById('f-date');
