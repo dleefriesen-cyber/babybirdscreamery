@@ -331,11 +331,14 @@
       position: absolute;
       inset: 0;
     }
+    .hero-photo video,
     .hero-photo img {
       width: 100%; height: 100%;
       object-fit: cover;
       object-position: center 72%;
     }
+    /* Fallback image hidden when video loads */
+    .hero-photo video + img { display: none; }
 
     /* Dark greenish-grey overlay — bleeds into nav, strong text contrast */
     .hero-veil {
@@ -1272,17 +1275,23 @@
     <!-- HERO -->
     <section id="hero">
       <div class="hero-photo">
-        <picture>
-          <source media="(max-width: 640px)" srcset="./Bou_Job_Visual_In_a_realistic_style_an_open_cooler_overflows_qXCc1yFy.png 1456w" sizes="100vw" />
-          <img
-            src="./Bou_Job_Visual_In_a_realistic_style_an_open_cooler_overflows_qXCc1yFy.png"
-            srcset="./Bou_Job_Visual_In_a_realistic_style_an_open_cooler_overflows_qXCc1yFy.png 1456w"
-            sizes="100vw"
-            alt="Colourful popsicles overflowing from a white ice cream cart in a sunny garden"
-            width="1456" height="816"
-            loading="eager"
-          />
-        </picture>
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          aria-hidden="true"
+        >
+          <source src="./hero.mp4" type="video/mp4" />
+        </video>
+        <!-- Fallback for browsers that don't support video -->
+        <img
+          src="./Bou_Job_Visual_In_a_realistic_style_an_open_cooler_overflows_qXCc1yFy.png"
+          alt="Colourful popsicles overflowing from a white ice cream cart in a sunny garden"
+          width="1456" height="816"
+          loading="eager"
+        />
       </div>
       <div class="hero-veil"></div>
 
