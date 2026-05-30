@@ -1690,6 +1690,10 @@
       card.style.willChange = 'transform';
       const isFeatured = card.classList.contains('featured');
 
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'box-shadow 0.1s ease';
+      });
+
       card.addEventListener('mousemove', e => {
         const r = card.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width  - 0.5;
@@ -1702,6 +1706,7 @@
       });
 
       card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform 0.35s ease, box-shadow 0.35s ease';
         card.style.transform = isFeatured ? 'scale(1.03)' : '';
         card.style.boxShadow = '';
       });
