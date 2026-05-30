@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="15" fill="#2E3D38"/>
+  <!-- Scoop -->
+  <circle cx="16" cy="11" r="6" fill="#C8796E"/>
+  <!-- Cone -->
+  <path d="M11 16 L16 26 L21 16 Z" fill="#DEC98A"/>
+  <!-- Bird body -->
+  <ellipse cx="16" cy="14" rx="5.5" ry="4.5" fill="white"/>
+  <!-- Bird head -->
+  <circle cx="16" cy="10" r="4" fill="white"/>
+  <!-- Eye -->
+  <circle cx="17.5" cy="9" r="1.1" fill="#2E3D38"/>
+  <circle cx="17.9" cy="8.6" r="0.35" fill="white"/>
+  <!-- Beak -->
+  <path d="M19.5 10.5 L22 11.5 L19.5 12.5 Z" fill="#DEC98A"/>
+  <!-- Blush -->
+  <ellipse cx="17" cy="11" rx="1.5" ry="1" fill="#C8796E" opacity="0.3"/>
+  <!-- Wing hint -->
+  <path d="M11 14 Q8 13 9 17 Q11 18 13 16 Z" fill="white" opacity="0.7"/>
+</svg>

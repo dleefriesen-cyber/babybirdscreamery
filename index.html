@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Baby Bird's Creamery — Boutique Ice Cream Cart Rental | Southern California</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="alternate icon" href="./favicon.svg" />
   <meta name="description" content="Baby Bird's Creamery is a boutique ice cream cart rental for birthdays, weddings, baby showers, and all your celebrations. Serving Southern California." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -228,6 +230,19 @@
       color: var(--green-dark);
       -webkit-text-fill-color: var(--green-dark);
       background: none;
+    }
+
+    .nav-logo {
+      height: 44px;
+      width: auto;
+      display: block;
+      transition: filter var(--t);
+      /* White on transparent nav over hero */
+      filter: brightness(0) invert(1);
+    }
+    #nav.scrolled .nav-logo {
+      /* Natural colors on white nav */
+      filter: none;
     }
     .nav-sub {
       font-size: 0.58rem;
@@ -1245,7 +1260,7 @@
     <div class="wrap">
       <div class="nav-inner">
         <a href="#hero" class="nav-brand" aria-label="Baby Bird's Creamery">
-          <span class="nav-script">BabyBirds</span>
+          <img src="./logo.svg" alt="Baby Bird's Creamery" class="nav-logo" width="120" height="45" />
 
         </a>
         <ul class="nav-links">
