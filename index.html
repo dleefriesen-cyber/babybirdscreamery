@@ -334,7 +334,7 @@
     .hero-photo img {
       width: 100%; height: 100%;
       object-fit: cover;
-      object-position: center 40%;
+      object-position: center 72%;
     }
 
     /* Dark greenish-grey overlay — bleeds into nav, strong text contrast */
@@ -655,6 +655,41 @@
       flex-shrink: 0;
       margin-top: 1px;
       transition: color 0.4s ease, content 0.4s ease;
+    }
+
+    /* Swipe hint */
+    .pkg-swipe-hint {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    .pkg-swipe-hint.hidden { opacity: 0; pointer-events: none; }
+    .swipe-text {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.40);
+    }
+    .swipe-arrow {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.30);
+      animation: swipePulse 1.6s ease-in-out infinite;
+    }
+    .swipe-arrow:first-child { animation-delay: 0.2s; }
+    @keyframes swipePulse {
+      0%, 100% { opacity: 0.3; transform: translateX(0); }
+      50% { opacity: 0.8; transform: translateX(3px); }
+    }
+    .swipe-arrow:first-child {
+      animation-name: swipePulseLeft;
+    }
+    @keyframes swipePulseLeft {
+      0%, 100% { opacity: 0.3; transform: translateX(0); }
+      50% { opacity: 0.8; transform: translateX(-3px); }
     }
 
     /* Carousel dots */
@@ -1142,13 +1177,23 @@
       }
       .pkg-grid::-webkit-scrollbar { display: none; }
       .pkg-card {
-        flex: 0 0 80vw;
-        max-width: 380px;
+        flex: 0 0 72vw;
+        max-width: 300px;
         scroll-snap-align: center;
       }
       .pkg-card.featured { transform: none; }
       .pkg-card.featured:hover { transform: translateY(-4px); }
+
+      /* Shrink card internals on mobile */
+      .pkg-img img { aspect-ratio: 4/3; }
+      .pkg-body { padding: 16px 18px 20px; }
+      .pkg-name { font-size: 1.2rem; margin-bottom: 2px; }
+      .pkg-price { font-size: 1.5rem; margin-bottom: 14px; }
+      .pkg-list { margin-bottom: 16px; }
+      .pkg-list li { font-size: 0.8rem; padding: 5px 0; }
+
       .pkg-dots { display: flex; justify-content: center; }
+      .pkg-swipe-hint { display: flex; }
       .pkg-compare-wrap .compare-hint { display: none; }
 
       .how-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; gap: 48px; }
@@ -1277,10 +1322,6 @@
               </div>
               <div class="about-stats reveal d3" style="justify-content: center;">
                 <div class="stat">
-                  <span class="stat-val">100+</span>
-                  <span class="stat-lbl">Events Served</span>
-                </div>
-                <div class="stat">
                   <span class="stat-val">5 ★</span>
                   <span class="stat-lbl">Rated</span>
                 </div>
@@ -1362,7 +1403,8 @@
               <p class="pkg-price" data-price="549">$0</p>
               <ul class="pkg-list">
                 <li data-shared="true">Cart rental included</li>
-                <li data-unique="true">Curated premium desserts &amp; treats</li>
+                <li data-unique="true">50 popsicles included</li>
+                <li data-unique="true">Add more popsicles at an additional cost</li>
                 <li data-unique="true">Optional decorative accents (signage, florals, themed touches)</li>
                 <li data-shared="true">Delivery &amp; pickup included</li>
                 <li data-shared="true">Up to 4 hours</li>
@@ -1395,6 +1437,13 @@
             </div>
           </article>
 
+        </div>
+
+        <!-- Swipe hint (mobile/tablet only) -->
+        <div class="pkg-swipe-hint" id="pkgSwipeHint" aria-hidden="true">
+          <span class="swipe-arrow">←</span>
+          <span class="swipe-text">Swipe to compare</span>
+          <span class="swipe-arrow">→</span>
         </div>
 
         <!-- Carousel dots (mobile/tablet only) -->
@@ -1715,9 +1764,17 @@
     }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    /* Package carousel dots */
+    /* Package carousel dots + swipe hint */
     const pkgDots = document.querySelectorAll('.pkg-dot');
     const pkgCarousel = document.getElementById('pkgGrid');
+    const swipeHint = document.getElementById('pkgSwipeHint');
+
+    /* Hide swipe hint after first scroll */
+    if (pkgCarousel && swipeHint) {
+      pkgCarousel.addEventListener('scroll', () => {
+        swipeHint.classList.add('hidden');
+      }, { once: true, passive: true });
+    }
     if (pkgCarousel && pkgDots.length) {
       pkgCarousel.addEventListener('scroll', () => {
         const cards = pkgCarousel.querySelectorAll('.pkg-card');
