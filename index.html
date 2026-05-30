@@ -126,7 +126,7 @@
       gap: 8px;
       font-family: var(--font-sans);
       font-size: 0.72rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       border-radius: 9999px;
@@ -169,15 +169,13 @@
       box-shadow: 0 8px 24px rgba(201,99,106,0.28);
     }
     .btn-ghost {
-      background: rgba(255,255,255,0.10);
+      background: var(--pink);
       color: var(--white);
-      border: 1px solid rgba(255,255,255,0.40);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--pink);
     }
     .btn-ghost:hover {
-      background: rgba(255,255,255,0.20);
-      border-color: rgba(255,255,255,0.75);
+      background: var(--pink-dark);
+      border-color: var(--pink-dark);
       transform: translateY(-2px);
     }
     .btn-w { width: 100%; }
@@ -224,10 +222,9 @@
       transition: color var(--t), -webkit-text-fill-color var(--t);
     }
     #nav.scrolled .nav-script {
-      background: linear-gradient(135deg, var(--gold) 25%, var(--gold-light) 55%, #A07830 85%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--green-dark);
+      -webkit-text-fill-color: var(--green-dark);
+      background: none;
     }
     .nav-sub {
       font-size: 0.58rem;
@@ -363,14 +360,15 @@
       font-weight: 400;
       letter-spacing: 0.36em;
       text-transform: uppercase;
-      color: rgba(222,201,138,0.75);
+      color: rgba(222,201,138,1);
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
       margin-bottom: 32px;
     }
     .hero-location::before, .hero-location::after {
       content: '';
       display: block;
       width: 40px; height: 1px;
-      background: rgba(222,201,138,0.40);
+      background: rgba(222,201,138,0.70);
       flex-shrink: 0;
     }
 
@@ -391,13 +389,13 @@
     .hero-sub {
       display: block;
       font-family: var(--font-sans);
-      font-size: clamp(0.58rem, 1.2vw, 0.78rem);
-      font-weight: 400;
-      letter-spacing: 0.55em;
+      font-size: clamp(0.72rem, 1.5vw, 1rem);
+      font-weight: 500;
+      letter-spacing: 0.75em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.78);
-      margin-top: 20px;
-      text-shadow: 0 1px 10px rgba(0,0,0,0.45);
+      color: #ffffff;
+      margin-top: 24px;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.70);
     }
 
     /* thin gold ornament */
@@ -447,7 +445,7 @@
       font-size: 0.62rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.40);
+      color: rgba(255,255,255,0.75);
       transition: color var(--t);
     }
     .hero-scroll:hover { color: rgba(255,255,255,0.75); }
@@ -1099,10 +1097,10 @@
     <section id="hero">
       <div class="hero-photo">
         <picture>
-          <source media="(max-width: 640px)" srcset="../BabyBirdsCreamery/Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png 1024w" sizes="100vw" />
+          <source media="(max-width: 640px)" srcset="./Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png 1024w" sizes="100vw" />
           <img
-            src="../BabyBirdsCreamery/Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png"
-            srcset="../BabyBirdsCreamery/Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png 1024w"
+            src="./Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png"
+            srcset="./Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png 1024w"
             sizes="100vw"
             alt="Baby Bird's Creamery cart with lush coral florals in a garden"
             width="1024" height="768"
@@ -1113,7 +1111,9 @@
       <div class="hero-veil"></div>
 
       <div class="hero-body">
+        <span class="hero-location">Southern California</span>
         <span class="hero-script">BabyBirds</span>
+        <span class="hero-sub">Ice &nbsp; Cream</span>
 
         <div class="hero-rule" aria-hidden="true">
           <span class="hero-rule-line rev"></span>
@@ -1136,8 +1136,8 @@
         <div class="about-grid">
           <div class="about-img reveal">
             <img
-              src="../BabyBirdsCreamery/Bou_Job_Visual_A_man_and_a_childs_hands_hold_up_a_red_and_a_PPyWxBF0.png"
-              srcset="../BabyBirdsCreamery/Bou_Job_Visual_A_man_and_a_childs_hands_hold_up_a_red_and_a_PPyWxBF0.png 1200w"
+              src="./Bou_Job_Visual_A_man_and_a_childs_hands_hold_up_a_red_and_a_PPyWxBF0.png"
+              srcset="./Bou_Job_Visual_A_man_and_a_childs_hands_hold_up_a_red_and_a_PPyWxBF0.png 1200w"
               sizes="(max-width: 640px) 100vw, 50vw"
               alt="A parent and child each holding a colourful popsicle surrounded by flowers"
               width="1200" height="1200" loading="lazy"
@@ -1187,8 +1187,8 @@
           <!-- Bare Cart -->
           <article class="pkg-card reveal" aria-label="The Bare Cart">
             <div class="pkg-img">
-              <img src="../BabyBirdsCreamery/Bou_Job_Visual_An_open-top_white_ice_cream_cart_with_a_white_zANME_wM.png"
-                srcset="../BabyBirdsCreamery/Bou_Job_Visual_An_open-top_white_ice_cream_cart_with_a_white_zANME_wM.png 1200w"
+              <img src="./Bou_Job_Visual_An_open-top_white_ice_cream_cart_with_a_white_zANME_wM.png"
+                srcset="./Bou_Job_Visual_An_open-top_white_ice_cream_cart_with_a_white_zANME_wM.png 1200w"
                 sizes="(max-width:640px) 100vw, 33vw"
                 alt="Clean white ice cream cart in a sunny garden" width="1200" height="1600" loading="lazy" />
             </div>
@@ -1210,8 +1210,8 @@
           <article class="pkg-card featured reveal d1" aria-label="The Sweet Spread — most popular" style="position:relative;">
             <span class="pkg-badge">⭐ Most Popular</span>
             <div class="pkg-img">
-              <img src="../BabyBirdsCreamery/Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png"
-                srcset="../BabyBirdsCreamery/Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png 1024w"
+              <img src="./Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png"
+                srcset="./Bou_Job_Visual_A_large_bouquet_of_coral_and_pink_flowers_in_a_HnGOueU.png 1024w"
                 sizes="(max-width:640px) 100vw, 33vw"
                 alt="Ice cream cart styled with a lush coral flower bouquet" width="1024" height="768" loading="lazy"
                 style="object-position:center 20%;" />
@@ -1234,8 +1234,8 @@
           <!-- Full Scoop -->
           <article class="pkg-card reveal d2" aria-label="The Full Scoop">
             <div class="pkg-img">
-              <img src="../BabyBirdsCreamery/Bou_Job_Visual_A_close-up_high-angle_view_shows_a_white_cooler_KP2uGRTT.png"
-                srcset="../BabyBirdsCreamery/Bou_Job_Visual_A_close-up_high-angle_view_shows_a_white_cooler_KP2uGRTT.png 1200w"
+              <img src="./Bou_Job_Visual_A_close-up_high-angle_view_shows_a_white_cooler_KP2uGRTT.png"
+                srcset="./Bou_Job_Visual_A_close-up_high-angle_view_shows_a_white_cooler_KP2uGRTT.png 1200w"
                 sizes="(max-width:640px) 100vw, 33vw"
                 alt="Top-down view of colourful premium popsicles in a white cart" width="1200" height="1600" loading="lazy" />
             </div>
@@ -1309,8 +1309,8 @@
           <span class="pill gold">🎀 Gender Reveals</span>
         </div>
         <div class="events-photo reveal d3">
-          <img src="../BabyBirdsCreamery/Bou_Job_Visual_In_a_soft-focus_outdoor_wedding_style_several_bepohbR2.png"
-            srcset="../BabyBirdsCreamery/Bou_Job_Visual_In_a_soft-focus_outdoor_wedding_style_several_bepohbR2.png 1200w"
+          <img src="./Bou_Job_Visual_In_a_soft-focus_outdoor_wedding_style_several_bepohbR2.png"
+            srcset="./Bou_Job_Visual_In_a_soft-focus_outdoor_wedding_style_several_bepohbR2.png 1200w"
             sizes="100vw"
             alt="Baby Bird's Creamery at an elegant outdoor wedding" width="1200" height="500" loading="lazy" />
         </div>
@@ -1327,20 +1327,20 @@
         </div>
         <div class="gallery-grid reveal d2">
           <div class="gallery-tile">
-            <img src="../BabyBirdsCreamery/Bou_Job_Visual_In_a_soft-focus_naturalistic_style_a_persons_hf3kY10O.png"
-              srcset="../BabyBirdsCreamery/Bou_Job_Visual_In_a_soft-focus_naturalistic_style_a_persons_hf3kY10O.png 1200w"
+            <img src="./Bou_Job_Visual_In_a_soft-focus_naturalistic_style_a_persons_hf3kY10O.png"
+              srcset="./Bou_Job_Visual_In_a_soft-focus_naturalistic_style_a_persons_hf3kY10O.png 1200w"
               sizes="(max-width:640px) 33vw, 420px"
               alt="Two hands holding a berry and chocolate popsicle amid roses" width="1200" height="1200" loading="lazy" />
           </div>
           <div class="gallery-tile">
-            <img src="../BabyBirdsCreamery/Bou_Job_Visual_In_a_close-up_shallow_depth_of_field_three_y-lpch6V.png"
-              srcset="../BabyBirdsCreamery/Bou_Job_Visual_In_a_close-up_shallow_depth_of_field_three_y-lpch6V.png 1200w"
+            <img src="./Bou_Job_Visual_In_a_close-up_shallow_depth_of_field_three_y-lpch6V.png"
+              srcset="./Bou_Job_Visual_In_a_close-up_shallow_depth_of_field_three_y-lpch6V.png 1200w"
               sizes="(max-width:640px) 33vw, 420px"
               alt="Close-up of fresh fruit popsicles" width="1200" height="1200" loading="lazy" />
           </div>
           <div class="gallery-tile">
-            <img src="../BabyBirdsCreamery/Bou_Job_Visual_A_man_and_a_childs_hands_hold_up_a_red_and_a_PPyWxBF0.png"
-              srcset="../BabyBirdsCreamery/Bou_Job_Visual_A_man_and_a_childs_hands_hold_up_a_red_and_a_PPyWxBF0.png 1200w"
+            <img src="./Bou_Job_Visual_A_man_and_a_childs_hands_hold_up_a_red_and_a_PPyWxBF0.png"
+              srcset="./Bou_Job_Visual_A_man_and_a_childs_hands_hold_up_a_red_and_a_PPyWxBF0.png 1200w"
               sizes="(max-width:640px) 33vw, 420px"
               alt="A parent and child holding popsicles at a garden party" width="1200" height="1200" loading="lazy" />
           </div>
@@ -1410,6 +1410,13 @@
                   <input class="fi" type="number" id="f-guests" name="guestCount" placeholder="Est. guests" min="1" required />
                 </div>
                 <div class="fg">
+                  <label class="fl" for="f-zip">Event ZIP Code <span class="req">*</span></label>
+                  <input class="fi" type="text" id="f-zip" name="zipCode" placeholder="e.g. 90210" pattern="[0-9]{5}" maxlength="5" required autocomplete="postal-code" />
+                </div>
+              </div>
+
+              <div class="fr">
+                <div class="fg" style="flex:1;">
                   <label class="fl" for="f-type">Event Type <span class="req">*</span></label>
                   <select class="fs" id="f-type" name="eventType" required>
                     <option value="" disabled selected>Select type...</option>
