@@ -1967,7 +1967,7 @@
           guestCount:      form.querySelector('[name="guestCount"]').value,
           zipCode:         form.querySelector('[name="zipCode"]').value.trim(),
           flavors:         flavorSummary,
-          extraCost:       flavorExtra > 0 ? 'USD' + flavorExtra : 'USD0',
+          extraCost:       flavorExtra > 0 ? '$' + flavorExtra : '$0',
           message:         form.querySelector('[name="message"]').value.trim(),
         };
 
@@ -2047,10 +2047,10 @@
       const cost  = extra * PRICE_PER_EXTRA_DOZEN;
       if (includedDozens > 0) {
         flavorTotal.innerHTML = extra > 0
-          ? total + ' dozen (' + (total * 12) + ' paletas) · <strong>+' + cost + ' USD for ' + extra + ' extra dozen</strong>'
+          ? total + ' dozen (' + (total * 12) + ' paletas) · <strong>Subtotal: $' + cost + '</strong>'
           : total + ' of ' + includedDozens + ' dozen · <strong>No extra charge</strong>';
       } else {
-        flavorTotal.innerHTML = total + ' dozen (' + (total * 12) + ' paletas) · <strong>' + cost + ' USD</strong>';
+        flavorTotal.innerHTML = total + ' dozen (' + (total * 12) + ' paletas) · <strong>Subtotal: $' + cost + '</strong>';
       }
     }
     function initFlavorPicker(pkg) {
@@ -2058,8 +2058,8 @@
       if (inc === undefined) { flavorSection.style.display = 'none'; return; }
       includedDozens = inc;
       flavorIncLabel.textContent = inc > 0
-        ? inc + ' dozen included · extras ' + PRICE_PER_EXTRA_DOZEN + ' USD/dozen'
-        : PRICE_PER_EXTRA_DOZEN + ' USD/dozen';
+        ? inc + ' dozen included · extras $' + PRICE_PER_EXTRA_DOZEN + '/dozen'
+        : '$' + PRICE_PER_EXTRA_DOZEN + '/dozen';
       flavorRowsWrap.innerHTML = '';
       for (let i = 0; i < (inc || 3); i++) addFlavorRow();
       flavorSection.style.display = 'block';
