@@ -8,6 +8,38 @@
   <link rel="alternate icon" href="./favicon.svg" />
   <meta name="description" content="Baby Bird's Creamery is a boutique ice cream cart rental for birthdays, weddings, baby showers, and all your celebrations. Serving Southern California." />
 
+  
+  <link rel="canonical" href="https://www.babybirdscreamery.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Baby Bird's Creamery — Paleta Cart Rental | Southern California" />
+  <meta property="og:description" content="Styled paleta &amp; ice cream cart rentals for birthdays, weddings, baby showers &amp; corporate events across Southern California. Packages from $375." />
+  <meta property="og:url" content="https://www.babybirdscreamery.com/" />
+  <meta property="og:image" content="https://www.babybirdscreamery.com/Bou_Job_Visual_In_a_garden_party_setting_during_golden_hour_a_6tmPO0As.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Baby Bird's Creamery — Paleta Cart Rental | Southern California" />
+  <meta name="twitter:description" content="Styled paleta &amp; ice cream cart rentals for birthdays, weddings, baby showers &amp; corporate events across Southern California. Packages from $375." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Baby Bird's Creamery",
+    "description": "Boutique paleta and ice cream cart rental for events across Southern California. Packages from $375 including delivery, pickup, and up to 4 hours of service.",
+    "url": "https://www.babybirdscreamery.com",
+    "image": "https://www.babybirdscreamery.com/Bou_Job_Visual_In_a_garden_party_setting_during_golden_hour_a_6tmPO0As.webp",
+    "priceRange": "$$$",
+    "areaServed": {
+      "@type": "State",
+      "name": "California"
+    },
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 33.9, "longitude": -118.1 },
+      "geoRadius": "100000"
+    },
+    "sameAs": ["https://www.instagram.com/babybirdscreamery"]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" />
@@ -1340,7 +1372,7 @@
           <span class="hero-rule-line"></span>
         </div>
 
-        <p class="hero-tagline">Your sweetest party moment, on wheels.</p>
+        <p class="hero-tagline">Styled paleta cart rentals for Southern California events.</p>
 
         <div class="hero-ctas">
           <a href="#packages" class="btn btn-ghost">See Our Packages</a>
@@ -1419,7 +1451,7 @@
             </div>
             <div class="pkg-body">
               <h3 class="pkg-name">The Bare Cart</h3>
-              <p class="pkg-price" data-price="375">$0</p>
+              <p class="pkg-price" data-price="375">$375</p>
               <ul class="pkg-list">
                 <li data-shared="true">Cart rental included</li>
                 <li data-shared="true">Delivery &amp; pickup included</li>
@@ -1427,7 +1459,7 @@
                 <li data-unique="true">You provide the treats &amp; styling</li>
                 <li data-unique="true">Perfect for the DIY host</li>
               </ul>
-              <a href="#contact" class="btn btn-outline btn-w">Book This Package</a>
+              <a href="#contact" class="btn btn-outline btn-w" data-pkg="The Bare Cart — $375">Book This Package</a>
             </div>
           </article>
 
@@ -1443,7 +1475,7 @@
             </div>
             <div class="pkg-body">
               <h3 class="pkg-name">The Sweet Spot</h3>
-              <p class="pkg-price" data-price="549">$0</p>
+              <p class="pkg-price" data-price="549">$549</p>
               <ul class="pkg-list">
                 <li data-shared="true">Cart rental included</li>
                 <li data-unique="true">60 popsicles included (5 dozen)</li>
@@ -1453,7 +1485,7 @@
                 <li data-shared="true">Up to 4 hours</li>
                 <li data-unique="true">Everything you need for an Insta-worthy setup</li>
               </ul>
-              <a href="#contact" class="btn btn-pink btn-w">Book This Package</a>
+              <a href="#contact" class="btn btn-pink btn-w" data-pkg="The Sweet Spot — $549 (Most Popular)">Book This Package</a>
             </div>
           </article>
 
@@ -1467,7 +1499,7 @@
             </div>
             <div class="pkg-body">
               <h3 class="pkg-name">The Full Scoop</h3>
-              <p class="pkg-price" data-price="949">$0</p>
+              <p class="pkg-price" data-price="949">$949</p>
               <ul class="pkg-list">
                 <li data-shared="true">Cart rental included</li>
                 <li data-shared="true">60 paletas included (5 dozen)</li>
@@ -1476,7 +1508,7 @@
                 <li data-shared="true">Up to 3 hours of service</li>
                 <li data-unique="true">Sit back and enjoy the party</li>
               </ul>
-              <a href="#contact" class="btn btn-outline btn-w">Book This Package</a>
+              <a href="#contact" class="btn btn-outline btn-w" data-pkg="The Full Scoop — $949">Book This Package</a>
             </div>
           </article>
 
@@ -1627,7 +1659,11 @@
             </div>
 
             <h3 class="form-title">Send Your Request</h3>
-            <form id="booking-form" novalidate>
+            <form id="booking-form" name="booking" method="POST" data-netlify="true" data-netlify-honeypot="website" novalidate>
+              <input type="hidden" name="form-name" value="booking" />
+              <input type="hidden" name="selectedPackage" id="h-pkg" value="" />
+              <input type="hidden" name="estimatedTotal" id="h-total" value="" />
+              <input type="hidden" name="pageSource" value="babybirdscreamery.com" />
 
               <!-- Honeypot: hidden from real users, bots fill it in → rejected -->
               <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;" aria-hidden="true">
@@ -2090,6 +2126,29 @@
     if (pkgSelect)    pkgSelect.addEventListener('change', function() { initFlavorPicker(pkgSelect.value); });
     if (flavorAddBtn) flavorAddBtn.addEventListener('click', addFlavorRow);
 
+
+    /* Package button → preselect form */
+    document.querySelectorAll('[data-pkg]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const pkg = this.getAttribute('data-pkg');
+        const pkgSel = document.getElementById('f-pkg');
+        const hPkg   = document.getElementById('h-pkg');
+        if (pkgSel) { pkgSel.value = pkg; pkgSel.dispatchEvent(new Event('change')); }
+        if (hPkg)   hPkg.value = pkg;
+      });
+    });
+
+    /* Keep hidden estimatedTotal in sync */
+    function syncHiddenTotal() {
+      const el = document.getElementById('flavor-total');
+      const h  = document.getElementById('h-total');
+      if (el && h) h.value = el.textContent || el.innerText;
+    }
+    const flavorTotalEl = document.getElementById('flavor-total');
+    if (flavorTotalEl) {
+      new MutationObserver(syncHiddenTotal).observe(flavorTotalEl, { childList: true, subtree: true, characterData: true });
+    }
+
     /* Smooth scroll */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', function(e) {
@@ -2105,21 +2164,3 @@
 </body>
 </html>
 
-<!--
-======================================================================
-GOOGLE APPS SCRIPT — paste into Extensions > Apps Script:
-
-function doPost(e) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  const data  = JSON.parse(e.postData.contents);
-  sheet.appendRow([new Date(), data.name, data.email, data.eventDate,
-    data.eventType, data.packageInterest, data.guestCount, data.message]);
-  return ContentService
-    .createTextOutput(JSON.stringify({ result: 'success' }))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-
-HEADERS (Row 1):
-Timestamp | Name | Email | Event Date | Event Type | Package Interest | Guest Count | Message
-======================================================================
--->
