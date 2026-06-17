@@ -1998,6 +1998,12 @@
       'The Sweet Spot — $549 (Most Popular)': 5,
       'The Full Scoop — $949': 0
     };
+    const PKG_PRICES = {
+      'The Bare Cart — $375': 375,
+      'The Sweet Spot — $549 (Most Popular)': 549,
+      'The Full Scoop — $949': 949
+    };
+    let basePrice = 0;
     const flavorSection  = document.getElementById('flavor-section');
     const flavorRowsWrap = document.getElementById('flavor-rows');
     const flavorAddBtn   = document.getElementById('flavor-add-btn');
@@ -2046,14 +2052,15 @@
       const extra = Math.max(0, total - includedDozens);
       const cost  = extra * PRICE_PER_EXTRA_DOZEN;
       if (includedDozens > 0) {
-        flavorTotal.innerHTML = extra > 0
-          ? total + ' dozen (' + (total * 12) + ' paletas) · <strong>Subtotal: $' + cost + '</strong>'
-          : total + ' of ' + includedDozens + ' dozen · <strong>No extra charge</strong>';
-      } else {
-        flavorTotal.innerHTML = total + ' dozen (' + (total * 12) + ' paletas) · <strong>Subtotal: $' + cost + '</strong>';
+        var grandTotal = basePrice + cost;
+        var extrasLine = extra > 0 ? ' + $' + cost + ' extras' : '';
+        flavorTotal.innerHTML = includedDozens > 0
+          ? total + ' dozen (' + (total * 12) + ' paletas)' + extrasLine + ' · <strong>Est. Total: $' + grandTotal + '</strong>'
+          : total + ' dozen (' + (total * 12) + ' paletas) · <strong>Est. Total: $' + grandTotal + '</strong>';
       }
     }
     function initFlavorPicker(pkg) {
+      basePrice = PKG_PRICES[pkg] || 0;
       const inc = PKG_INCLUDED[pkg];
       if (inc === undefined) { flavorSection.style.display = 'none'; return; }
       includedDozens = inc;
