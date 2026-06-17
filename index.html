@@ -1252,102 +1252,24 @@
 
     section { scroll-margin-top: var(--nav-h); }
 
-    /* ── FLAVOR PICKER ───────────────────────────────────── */
-    #flavor-section {
-      display: none;
-      margin-top: 20px;
-      border: 1px solid rgba(200,121,110,0.25);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .flavor-header {
-      background: rgba(200,121,110,0.07);
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-      border-bottom: 1px solid rgba(200,121,110,0.15);
-    }
-    .flavor-header-left {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text);
-    }
-    .flavor-included-badge {
-      font-size: 0.68rem;
-      font-weight: 500;
-      color: var(--pink);
-      background: rgba(200,121,110,0.10);
-      border: 1px solid rgba(200,121,110,0.22);
-      border-radius: 9999px;
-      padding: 3px 10px;
-      letter-spacing: 0.05em;
-    }
-    .flavor-col-label {
-      display: grid;
-      grid-template-columns: 1fr 88px 32px;
-      gap: 8px;
-      padding: 8px 16px 2px;
-      font-size: 0.62rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-light);
-    }
-    .flavor-rows { padding: 4px 16px 4px; display: flex; flex-direction: column; gap: 8px; }
-    .flavor-row {
-      display: grid;
-      grid-template-columns: 1fr 88px 32px;
-      gap: 8px;
-      align-items: center;
-    }
-    .flavor-row select,
-    .flavor-row input[type="number"] {
-      display: block; width: 100%; padding: 9px 10px;
-      border: 1px solid rgba(26,24,20,0.14); border-radius: 4px;
-      font-size: 0.88rem; color: var(--text); background: var(--ivory);
-      outline: none; transition: border-color 0.2s, box-shadow 0.2s;
-      -webkit-appearance: none; appearance: none; font-family: var(--font-sans);
-    }
-    .flavor-row select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%239A948E' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 8px center;
-      background-color: var(--ivory); padding-right: 28px;
-    }
-    .flavor-row select:focus,
-    .flavor-row input[type="number"]:focus {
-      border-color: var(--pink); background: var(--white);
-      box-shadow: 0 0 0 3px rgba(201,99,106,0.10);
-    }
-    .flavor-remove {
-      width: 30px; height: 30px; display: flex; align-items: center;
-      justify-content: center; border-radius: 50%;
-      border: 1px solid rgba(26,24,20,0.12); background: transparent;
-      color: var(--text-light); font-size: 1rem; cursor: pointer;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-      flex-shrink: 0; font-family: var(--font-sans);
-    }
-    .flavor-remove:hover { background: rgba(200,121,110,0.10); color: var(--pink); border-color: var(--pink); }
-    .flavor-remove:disabled { opacity: 0.3; cursor: not-allowed; }
-    .flavor-footer {
-      padding: 10px 16px 14px; display: flex; align-items: center;
-      justify-content: space-between; flex-wrap: wrap; gap: 10px;
-      border-top: 1px solid rgba(26,24,20,0.07); margin-top: 8px;
-    }
-    .flavor-add-btn {
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--pink); background: transparent;
-      border: 1px solid rgba(200,121,110,0.35); border-radius: 9999px;
-      padding: 7px 18px; cursor: pointer;
-      transition: background 0.2s, border-color 0.2s; font-family: var(--font-sans);
-    }
-    .flavor-add-btn:hover { background: rgba(200,121,110,0.07); border-color: var(--pink); }
-    .flavor-total { font-size: 0.8rem; color: var(--text-mid); text-align: right; line-height: 1.4; }
-    .flavor-total strong { color: var(--pink); }
+    #flavor-section{display:none;margin-top:20px;border:1px solid rgba(200,121,110,0.25);border-radius:6px;overflow:hidden}
+    .flavor-header{background:rgba(200,121,110,0.07);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-bottom:1px solid rgba(200,121,110,0.15)}
+    .flavor-header-left{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text)}
+    .flavor-included-badge{font-size:.68rem;font-weight:500;color:var(--pink);background:rgba(200,121,110,.10);border:1px solid rgba(200,121,110,.22);border-radius:9999px;padding:3px 10px;letter-spacing:.05em}
+    .flavor-col-label{display:grid;grid-template-columns:1fr 88px 32px;gap:8px;padding:8px 16px 2px;font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-light)}
+    .flavor-rows{padding:4px 16px;display:flex;flex-direction:column;gap:8px}
+    .flavor-row{display:grid;grid-template-columns:1fr 88px 32px;gap:8px;align-items:center}
+    .flavor-row select,.flavor-row input[type=number]{display:block;width:100%;padding:9px 10px;border:1px solid rgba(26,24,20,.14);border-radius:4px;font-size:.88rem;color:var(--text);background:var(--ivory);outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none;font-family:var(--font-sans)}
+    .flavor-row select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%239A948E' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;background-color:var(--ivory);padding-right:28px}
+    .flavor-row select:focus,.flavor-row input[type=number]:focus{border-color:var(--pink);background:var(--white);box-shadow:0 0 0 3px rgba(201,99,106,.10)}
+    .flavor-remove{width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid rgba(26,24,20,.12);background:transparent;color:var(--text-light);font-size:1rem;cursor:pointer;transition:background .2s,color .2s,border-color .2s;flex-shrink:0;font-family:var(--font-sans)}
+    .flavor-remove:hover{background:rgba(200,121,110,.10);color:var(--pink);border-color:var(--pink)}
+    .flavor-remove:disabled{opacity:.3;cursor:not-allowed}
+    .flavor-footer{padding:10px 16px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(26,24,20,.07);margin-top:8px}
+    .flavor-add-btn{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--pink);background:transparent;border:1px solid rgba(200,121,110,.35);border-radius:9999px;padding:7px 18px;cursor:pointer;transition:background .2s,border-color .2s;font-family:var(--font-sans)}
+    .flavor-add-btn:hover{background:rgba(200,121,110,.07);border-color:var(--pink)}
+    .flavor-total{font-size:.8rem;color:var(--text-mid);text-align:right;line-height:1.4}
+    .flavor-total strong{color:var(--pink)}
   </style>
 </head>
 <body>
@@ -1772,12 +1694,10 @@
 
               <div id="flavor-section" aria-live="polite">
                 <div class="flavor-header">
-                  <span class="flavor-header-left">🍦 Choose Your Flavors</span>
+                  <span class="flavor-header-left">&#x1F366; Choose Your Flavors</span>
                   <span class="flavor-included-badge" id="flavor-included-label"></span>
                 </div>
-                <div class="flavor-col-label">
-                  <span>Flavor</span><span>Dozens</span><span></span>
-                </div>
+                <div class="flavor-col-label"><span>Flavor</span><span>Dozens</span><span></span></div>
                 <div class="flavor-rows" id="flavor-rows"></div>
                 <div class="flavor-footer">
                   <button type="button" class="flavor-add-btn" id="flavor-add-btn">+ Add Another Flavor</button>
@@ -1792,7 +1712,7 @@
               <div id="form-err" class="form-err" role="alert" aria-live="polite">Something went wrong. Please try again shortly.</div>
 
               <button type="submit" id="submit-btn" class="btn-submit">
-                <span class="btn-label">Check Availability →</span>
+                <span class="btn-label">Check Availability &rarr;</span>
                 <div class="spin"></div>
               </button>
             </form>
@@ -2036,8 +1956,8 @@
         subBtn.disabled = true;
         subBtn.classList.add('loading');
 
-        const flavorSummary   = flavorSection && flavorSection.style.display !== 'none' ? getFlavorSummary()   : '';
-        const flavorExtraCost = flavorSection && flavorSection.style.display !== 'none' ? getFlavorExtraCost() : 0;
+        var flavorSummary = flavorSection && flavorSection.style.display !== 'none' ? getFlavorSummary() : '';
+        var flavorExtra   = flavorSection && flavorSection.style.display !== 'none' ? getFlavorExtraCost() : 0;
         const data = {
           name:            form.querySelector('[name="name"]').value.trim(),
           email:           form.querySelector('[name="email"]').value.trim(),
@@ -2047,58 +1967,7 @@
           guestCount:      form.querySelector('[name="guestCount"]').value,
           zipCode:         form.querySelector('[name="zipCode"]').value.trim(),
           flavors:         flavorSummary,
-          extraCost:       flavorExtraCost > 0 ? '
-
-        try {
-          await fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST', mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-          });
-          form.style.display = 'none';
-          fSucc.style.display = 'block';
-        } catch {
-          fErr.style.display = 'block';
-          subBtn.disabled = false;
-          subBtn.classList.remove('loading');
-        }
-      });
-    }
-
-    /* Smooth scroll */
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', function(e) {
-        const t = document.querySelector(this.getAttribute('href'));
-        if (!t) return;
-        e.preventDefault();
-        const h = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'));
-        window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - h, behavior: 'smooth' });
-      });
-    });
-  </script>
-
-</body>
-</html>
-
-<!--
-======================================================================
-GOOGLE APPS SCRIPT — paste into Extensions > Apps Script:
-
-function doPost(e) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  const data  = JSON.parse(e.postData.contents);
-  sheet.appendRow([new Date(), data.name, data.email, data.eventDate,
-    data.eventType, data.packageInterest, data.guestCount, data.message]);
-  return ContentService
-    .createTextOutput(JSON.stringify({ result: 'success' }))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-
-HEADERS (Row 1):
-Timestamp | Name | Email | Event Date | Event Type | Package Interest | Guest Count | Message
-======================================================================
--->
- + flavorExtraCost : '$0',
+          extraCost:       flavorExtra > 0 ? 'USD' + flavorExtra : 'USD0',
           message:         form.querySelector('[name="message"]').value.trim(),
         };
 
@@ -2118,26 +1987,16 @@ Timestamp | Name | Email | Event Date | Event Type | Package Interest | Guest Co
       });
     }
 
-    /* Smooth scroll */
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', function(e) {
-        const t = document.querySelector(this.getAttribute('href'));
-        if (!t) return;
-        e.preventDefault();
-        const h = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'));
-        window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - h, behavior: 'smooth' });
-      });
-    });
 
     /* Flavor Picker */
     const FLAVORS = {
       'Cream Paletas': ['Fresas con Crema','Cookies & Cream','Dulce de Leche','Arroz con Leche','Coconut','Nutella'],
-      'Fruit Paletas': ['Mango','Mango Chamoy','Strawberry','Pineapple','Tamarind','Watermelon'],
+      'Fruit Paletas': ['Mango','Mango Chamoy','Strawberry','Pineapple','Tamarind','Watermelon']
     };
     const PRICE_PER_EXTRA_DOZEN = 20;
     const PKG_INCLUDED = {
       'The Sweet Spot — $549 (Most Popular)': 5,
-      'The Full Scoop — $949': 0,
+      'The Full Scoop — $949': 0
     };
     const flavorSection  = document.getElementById('flavor-section');
     const flavorRowsWrap = document.getElementById('flavor-rows');
@@ -2148,52 +2007,50 @@ Timestamp | Name | Email | Event Date | Event Type | Package Interest | Guest Co
     let includedDozens   = 0;
 
     function buildFlavorSelect() {
-      const sel = document.createElement('select');
-      sel.required = true;
-      const blank = document.createElement('option');
-      blank.value = ''; blank.disabled = true; blank.selected = true; blank.textContent = 'Select flavor…';
-      sel.appendChild(blank);
-      for (const [group, items] of Object.entries(FLAVORS)) {
-        const og = document.createElement('optgroup'); og.label = group;
-        items.forEach(f => { const o = document.createElement('option'); o.value = f; o.textContent = f; og.appendChild(o); });
+      const sel = document.createElement('select'); sel.required = true;
+      const b = document.createElement('option');
+      b.value = ''; b.disabled = true; b.selected = true; b.textContent = 'Select flavor…';
+      sel.appendChild(b);
+      for (const [g, items] of Object.entries(FLAVORS)) {
+        const og = document.createElement('optgroup'); og.label = g;
+        items.forEach(f => {
+          const o = document.createElement('option'); o.value = f; o.textContent = f; og.appendChild(o);
+        });
         sel.appendChild(og);
       }
       sel.addEventListener('change', updateFlavorTotal);
       return sel;
     }
-    function buildDozenInput(def) {
-      const inp = document.createElement('input');
-      inp.type = 'number'; inp.min = '1'; inp.max = '99'; inp.value = def || 1; inp.required = true;
-      inp.addEventListener('input', updateFlavorTotal);
-      return inp;
+    function buildDozenInput() {
+      const i = document.createElement('input');
+      i.type = 'number'; i.min = '1'; i.max = '99'; i.value = 1; i.required = true;
+      i.addEventListener('input', updateFlavorTotal);
+      return i;
     }
     function addFlavorRow() {
       const row = document.createElement('div'); row.className = 'flavor-row';
-      const sel = buildFlavorSelect();
-      const inp = buildDozenInput(1);
       const btn = document.createElement('button');
       btn.type = 'button'; btn.className = 'flavor-remove'; btn.innerHTML = '×'; btn.title = 'Remove';
-      btn.addEventListener('click', () => { row.remove(); updateRemoveBtns(); updateFlavorTotal(); });
-      row.appendChild(sel); row.appendChild(inp); row.appendChild(btn);
-      flavorRowsWrap.appendChild(row);
-      updateRemoveBtns(); updateFlavorTotal();
+      btn.addEventListener('click', function() { row.remove(); updateRemoveBtns(); updateFlavorTotal(); });
+      row.appendChild(buildFlavorSelect()); row.appendChild(buildDozenInput()); row.appendChild(btn);
+      flavorRowsWrap.appendChild(row); updateRemoveBtns(); updateFlavorTotal();
     }
     function updateRemoveBtns() {
       const rows = flavorRowsWrap.querySelectorAll('.flavor-row');
-      rows.forEach(r => { r.querySelector('.flavor-remove').disabled = rows.length === 1; });
+      rows.forEach(function(r) { r.querySelector('.flavor-remove').disabled = rows.length === 1; });
     }
     function updateFlavorTotal() {
       const rows = flavorRowsWrap.querySelectorAll('.flavor-row');
       let total = 0;
-      rows.forEach(r => { const v = parseInt(r.querySelector('input').value, 10); if (v > 0) total += v; });
+      rows.forEach(function(r) { const v = parseInt(r.querySelector('input').value, 10); if (v > 0) total += v; });
       const extra = Math.max(0, total - includedDozens);
       const cost  = extra * PRICE_PER_EXTRA_DOZEN;
       if (includedDozens > 0) {
         flavorTotal.innerHTML = extra > 0
-          ? total + ' dozen (' + (total*12) + ' paletas) · <strong>+$' + cost + ' for ' + extra + ' extra dozen</strong>'
-          : total + ' of ' + includedDozens + ' dozen selected · <strong>No extra charge</strong>';
+          ? total + ' dozen (' + (total * 12) + ' paletas) · <strong>+' + cost + ' USD for ' + extra + ' extra dozen</strong>'
+          : total + ' of ' + includedDozens + ' dozen · <strong>No extra charge</strong>';
       } else {
-        flavorTotal.innerHTML = total + ' dozen (' + (total*12) + ' paletas) · <strong>$' + cost + '</strong>';
+        flavorTotal.innerHTML = total + ' dozen (' + (total * 12) + ' paletas) · <strong>' + cost + ' USD</strong>';
       }
     }
     function initFlavorPicker(pkg) {
@@ -2201,26 +2058,41 @@ Timestamp | Name | Email | Event Date | Event Type | Package Interest | Guest Co
       if (inc === undefined) { flavorSection.style.display = 'none'; return; }
       includedDozens = inc;
       flavorIncLabel.textContent = inc > 0
-        ? inc + ' dozen included · extras $' + PRICE_PER_EXTRA_DOZEN + '/dozen'
-        : '$' + PRICE_PER_EXTRA_DOZEN + '/dozen';
+        ? inc + ' dozen included · extras ' + PRICE_PER_EXTRA_DOZEN + ' USD/dozen'
+        : PRICE_PER_EXTRA_DOZEN + ' USD/dozen';
       flavorRowsWrap.innerHTML = '';
       for (let i = 0; i < (inc || 3); i++) addFlavorRow();
       flavorSection.style.display = 'block';
       updateFlavorTotal();
     }
     function getFlavorSummary() {
-      return [...flavorRowsWrap.querySelectorAll('.flavor-row')]
-        .map(r => { const f = r.querySelector('select').value; const d = parseInt(r.querySelector('input').value,10); return f && d > 0 ? f + ' x' + d + ' doz' : ''; })
-        .filter(Boolean).join(', ');
+      return Array.from(flavorRowsWrap.querySelectorAll('.flavor-row'))
+        .map(function(r) {
+          const f = r.querySelector('select').value;
+          const d = parseInt(r.querySelector('input').value, 10);
+          return f && d > 0 ? f + ' x' + d + ' doz' : '';
+        }).filter(Boolean).join(', ');
     }
     function getFlavorExtraCost() {
       let t = 0;
-      flavorRowsWrap.querySelectorAll('.flavor-row').forEach(r => { const v = parseInt(r.querySelector('input').value,10); if (v>0) t+=v; });
+      flavorRowsWrap.querySelectorAll('.flavor-row').forEach(function(r) {
+        const v = parseInt(r.querySelector('input').value, 10); if (v > 0) t += v;
+      });
       return Math.max(0, t - includedDozens) * PRICE_PER_EXTRA_DOZEN;
     }
-    if (pkgSelect)    pkgSelect.addEventListener('change', () => initFlavorPicker(pkgSelect.value));
+    if (pkgSelect)    pkgSelect.addEventListener('change', function() { initFlavorPicker(pkgSelect.value); });
     if (flavorAddBtn) flavorAddBtn.addEventListener('click', addFlavorRow);
 
+    /* Smooth scroll */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        const t = document.querySelector(this.getAttribute('href'));
+        if (!t) return;
+        e.preventDefault();
+        const h = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'));
+        window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - h, behavior: 'smooth' });
+      });
+    });
   </script>
 
 </body>
